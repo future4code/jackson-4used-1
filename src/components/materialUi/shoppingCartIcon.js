@@ -17,9 +17,10 @@ const StyledBadge = withStyles((theme) => ({
 
 <input accept="image/*" className={classes.input} id="shopping-cart-icon" />
 <label htmlFor="shopping-cart-icon">
-    <IconButton color="default" aria-label="shopping cart" component="span">
+    <IconButton color="#202020" aria-label="shopping cart" component="span"> //Se houver problemas com a cor, mudar para secondary;
         <StyledBadge badgeContent={3} color="secondary">
             <ShoppingCartIcon />
         </StyledBadge>
     </IconButton>
 </label>
+
