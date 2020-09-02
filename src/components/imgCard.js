@@ -9,11 +9,22 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { render, findByLabelText } from '@testing-library/react';
+import { Container } from '@material-ui/core';
+import styled from 'styled-components'
+
+const TESTE = styled.div`
+display:flex;
+justify-content:space-around;
+
+
+`
+
+
 
 const useStyles = makeStyles({
   root: {
-    
-    maxWidth: 345, //alterar valor
+  
+    maxWidth: 340, //alterar valor
   },
   media: {
     height: 140, //alterar valor
@@ -25,8 +36,10 @@ export default function MediaCard() {
   
     
     return (
-      
+      <TESTE>
+
       <Card className={classes.root}>
+        
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -44,7 +57,9 @@ export default function MediaCard() {
           </Typography>
         </CardContent>
       </CardActionArea>  
+      
     </Card>
+          </TESTE>
   )
 
 }
