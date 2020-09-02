@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Logotipo from '../2.png'
+import Logotipo from '../images/4used-logo.png'
 import { withStyles } from '@material-ui/core/styles'
 import Badge from '@material-ui/core/Badge'
 import IconButton from '@material-ui/core/IconButton'
