@@ -1,6 +1,7 @@
 import React from 'react'
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
+import { createMuiTheme, MuiThemeProvider, AppBar } from "@material-ui/core"
 import Header from './components/Header'
+import shoppingCart, {Appbar} from './components/shoppingCart'
 
 
 import MediaCard, { CardMedia } from './components/imgCard';
@@ -23,6 +24,7 @@ function App() {
 
 
 			< MediaCard/>
+			<AppBar/>
 			
 		</MuiThemeProvider>
 	)
