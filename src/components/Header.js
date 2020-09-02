@@ -28,7 +28,7 @@ const Container1 = styled.div`
     
 `
 const Container2 = styled.div`
-    margin-right: 180px;
+    margin-right: 200px;
     align-self: center;
     
 `

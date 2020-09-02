@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 
-function Footer() {
+export default function Footer() {
   return (
     <div style={{ width: '100%' }}>
       <Box display="flex" p={1} bgcolor="#202020">
@@ -13,4 +13,3 @@ function Footer() {
     </div>
   );
 }
-export default Footer()
