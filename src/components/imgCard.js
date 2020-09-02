@@ -8,9 +8,11 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { render, findByLabelText } from '@testing-library/react';
 
 const useStyles = makeStyles({
   root: {
+    
     maxWidth: 345, //alterar valor
   },
   media: {
@@ -19,26 +21,30 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard() {
-  const classes = useStyles();
-
-  return (
-    <Card className={classes.root}>
+  const classes = useStyles()
+  
+    
+    return (
+      
+      <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg" //alterar valor
-          title="Contemplative Reptile" //alterar valor
-        />
+          image="https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1305222264" //alterar valor
+          title="Tv Samsung led" //alterar valor
+          />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard //alterar valor
+          Smart TV LED 43" UHD 4K Samsung 43TU7000 Crystal UHD,
+          HDR, Borda Infinita, Controle Remoto Único, Bluetooth - 2020
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica //alterar valor
+          A Crystal UHD é a evolução das TVs 4K da Samsung, com cores mais apuradas,
+           design superior e a tela mais fina da categoria.
           </Typography>
         </CardContent>
       </CardActionArea>  
     </Card>
-  );
+  )
+
 }
