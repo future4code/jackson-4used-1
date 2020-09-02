@@ -65,7 +65,7 @@ export default class Header extends React.Component {
                             margin="dense"
                             endAdornment={
                                 <InputAdornment position="end">
-                                    <IconButton size="small">
+                                    <IconButton aria-label="search" size="small">
                                         <SearchIcon />
                                     </IconButton>
                                 </InputAdornment>
