@@ -4,10 +4,10 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
 const myTheme = createMuiTheme ({
 	palette: {
 		primary: {
-			main: "#FCCA64"
+			main: "#FCCA64" //Maximum Yellow - Amarelo Jamaica
 		},
 		secondary: {
-			main: "#F04E3E"
+			main: "#43ADA5" // Verdigris - Verde Jamaica
 		}
 	}
 })
