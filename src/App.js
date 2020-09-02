@@ -1,7 +1,9 @@
 import React from 'react'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
 import Header from './components/Header'
-import Footer from './components/Footer'
+
+
+import MediaCard, { CardMedia } from './components/imgCard';
 
 const myTheme = createMuiTheme ({
 	palette: {
@@ -18,7 +20,10 @@ function App() {
 	return (
         <MuiThemeProvider theme={myTheme}>
 			<Header />
-			<Footer />
+
+
+			< MediaCard/>
+			
 		</MuiThemeProvider>
 	)
 }
