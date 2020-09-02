@@ -1,6 +1,9 @@
 import React from 'react'
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
+import { createMuiTheme, MuiThemeProvider, AppBar } from "@material-ui/core"
 import Header from './components/Header'
+import shoppingCart, {Appbar} from './components/shoppingCart'
+import MediaCard, { CardMedia } from './components/imgCard';
+import DetailsProduct from './components/DetailsProduct'
 import Footer from './components/Footer'
 
 const myTheme = createMuiTheme ({
@@ -18,6 +21,13 @@ function App() {
 	return (
         <MuiThemeProvider theme={myTheme}>
 			<Header />
+
+
+			< MediaCard/>
+			<AppBar/>
+			
+			<DetailsProduct />
+
 			<Footer />
 		</MuiThemeProvider>
 	)
