@@ -24,17 +24,16 @@ function App() {
 	return (
         <MuiThemeProvider theme={myTheme}>
 			<Header />
-			{/* <HomePage /> */}
+			{/* <HomePage />
 			
-			{/* <ProductsList />
+			<ProductsList />
 
 
 			< MediaCard/>
 			<AppBar/>
 			
 			<DetailsProduct /> */}
-			<LoginPage />
-
+			<Appbar />
 			<Footer />
 		</MuiThemeProvider>
 	)
