@@ -33,7 +33,7 @@ function App() {
 			<AppBar/>
 			
 			<DetailsProduct /> */}
-			<Appbar />
+			
 			<Footer />
 		</MuiThemeProvider>
 	)
