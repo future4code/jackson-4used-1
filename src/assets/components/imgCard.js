@@ -34,7 +34,7 @@ export default function MediaCard() {
           title="Tv Samsung led" //alterar valor
           />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h2">
           Smart TV LED 43" UHD 4K Samsung 43TU7000 Crystal UHD,
           HDR, Borda Infinita, Controle Remoto Único, Bluetooth - 2020
           </Typography>
