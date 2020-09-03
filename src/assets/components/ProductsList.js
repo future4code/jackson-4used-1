@@ -184,7 +184,7 @@ export default function ProductsList() {
                 </div>
             </ProductsHeader>
             <ProductsListContainer>
-                 {/* <MediaCard />
+               git pu  {/* <MediaCard />
                 <MediaCard />
                 <MediaCard />
                 <MediaCard />
