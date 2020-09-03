@@ -21,6 +21,8 @@ const All = styled.div`
 const ProductsHeader = styled.div`
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #EEE9E9;
+    align-items: center;
 `
 
 const Filters = styled.div`
@@ -182,6 +184,7 @@ export default function ProductsList() {
                 </div>
             </ProductsHeader>
             <ProductsListContainer>
+               git pu  {/* <MediaCard />
                 <MediaCard />
                 <MediaCard />
                 <MediaCard />
@@ -190,8 +193,7 @@ export default function ProductsList() {
                 <MediaCard />
                 <MediaCard />
                 <MediaCard />
-                <MediaCard />
-                <MediaCard />
+                <MediaCard />  */}
             </ProductsListContainer>
         </All>
     );
