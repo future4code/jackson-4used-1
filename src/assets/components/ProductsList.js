@@ -21,6 +21,8 @@ const All = styled.div`
 const ProductsHeader = styled.div`
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #EEE9E9;
+    align-items: center;
 `
 
 const Filters = styled.div`
