@@ -5,6 +5,7 @@ import shoppingCart, {Appbar} from './assets/components/shoppingCart'
 import MediaCard, { CardMedia } from './assets/components/imgCard';
 import DetailsProduct from './assets/components/DetailsProduct'
 import Footer from './assets/components/Footer'
+import ProductsList from './assets/components/ProductsList'
 
 const myTheme = createMuiTheme ({
 	palette: {
@@ -21,6 +22,8 @@ function App() {
 	return (
         <MuiThemeProvider theme={myTheme}>
 			<Header />
+
+			<ProductsList />
 
 
 			< MediaCard/>
