@@ -7,6 +7,7 @@ import DetailsProduct from './assets/components/DetailsProduct'
 import Footer from './assets/components/Footer'
 import ProductsList from './assets/components/ProductsList'
 import HomePage from './components/HomePage';
+import LoginPage from './assets/components/LoginPage'
 
 const myTheme = createMuiTheme ({
 	palette: {
@@ -23,14 +24,16 @@ function App() {
 	return (
         <MuiThemeProvider theme={myTheme}>
 			<Header />
-			<HomePage />
-			<ProductsList />
+			{/* <HomePage /> */}
+			
+			{/* <ProductsList />
 
 
 			< MediaCard/>
 			<AppBar/>
 			
-			<DetailsProduct />
+			<DetailsProduct /> */}
+			<LoginPage />
 
 			<Footer />
 		</MuiThemeProvider>
