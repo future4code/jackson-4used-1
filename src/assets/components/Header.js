@@ -16,8 +16,9 @@ const All = styled.div`
  justify-content: space-between;
  align-items: center;
  padding: 8px 24px;
- margin: 0 24px;
+ margin: 0 auto;
  border-bottom: 1px solid #EEE9E9;
+ max-width: 1024px;
  /* font-family: 'Merriweather', serif; */
 `
 
