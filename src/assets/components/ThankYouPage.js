@@ -9,6 +9,7 @@ const ThankYouPage = styled.div`
   color: #43ada5;
   margin-top: 5vh;
   `
+
 export default function ThankYou() {
   return (
     <ThankYouPage>
@@ -17,6 +18,7 @@ export default function ThankYou() {
           alt="Volte sempre!"
         />
           <h2>Volte sempre!</h2>
+ 
     </ThankYouPage>
   );
 }
