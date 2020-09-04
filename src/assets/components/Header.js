@@ -90,7 +90,7 @@ export default class Header extends React.Component {
                         Entrar
                     </SpanStyled>
                     <SpanStyled
-                        onClick={this.props.onClickCreateProduct}
+                        onClick={this.props.onClickSell}
                     >
                         Quero vender
                     </SpanStyled>
@@ -98,7 +98,7 @@ export default class Header extends React.Component {
                         Fale conosco
                     </SpanStyled>
                     <IconButton aria-label="shopping cart" component="span"> {/*Se houver problemas com a cor, mudar para secondary*/}
-                        <StyledBadge badgeContent={3} color="secondary">
+                        <StyledBadge badgeContent={3} color="primary">
                             <ShoppingCartIcon />
                         </StyledBadge>
                     </IconButton>

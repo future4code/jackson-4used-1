@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components"
 import Carousel from 'react-elastic-carousel'
-import MediaCard, { CardMedia } from "../assets/components/imgCard";
+import MediaCard, { CardMedia } from './imgCard'
 
 const ContainerHome = styled.div`
     max-width: 1024px;
