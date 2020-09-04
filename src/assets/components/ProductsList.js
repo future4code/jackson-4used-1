@@ -11,6 +11,8 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import MediaCard, { CardMedia } from './imgCard';
+import axios from 'axios'
+import { baseUrl } from "../constants/axiosConstants";
 
 const All = styled.div`
     max-width: 1024px;
@@ -74,7 +76,7 @@ const styles = theme => ({
 class ProductsList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { anchorEl: null, open: false };
+        this.state = { anchorEl: null, open: false, listProduct: [] };
     }
 
     handleClick = event => {
@@ -85,11 +87,27 @@ class ProductsList extends React.Component {
         this.setState({ open: false, anchorEl: null });
     };
 
+    allProducts = () => {
+        axios.get( baseUrl )
+
+        .then((response) => {
+            this.setState({
+                listProduct: response.data.products
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+    componentDidMount = () => {
+        this.allProducts()
+    }
     render () {
         const open = this.state.anchorEl === null ? false : true;
         const id = open ? "simple-popover" : undefined;
         const { classes } = this.props;
-
+        
+        
         return (
             <All>
                 <ProductsHeader>
@@ -186,9 +204,19 @@ class ProductsList extends React.Component {
                     </div>
                 </ProductsHeader>
                 <ProductsListContainer>
-                    <MediaCard />
-                    <MediaCard />
-                    <MediaCard />
+                 {this.state.listProduct.map((product) => {
+                     console.log(product.photos)
+                    return (
+                        <MediaCard 
+                            key={product.id}
+                            imagem={product.photos}
+                            title={product.name}
+                            idProduct={product.id}
+                            description={product.description}
+                            price={product.price}
+                        />
+                    )
+                })}
                     <MediaCard />
                 </ProductsListContainer>
             </All>

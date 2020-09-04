@@ -26,13 +26,14 @@ function App() {
 			<Header />
 			{/* <HomePage />
 			
-			<ProductsList />
+			
 
 
 			< MediaCard/>
 			<AppBar/>
 			
 			<DetailsProduct /> */}
+			<ProductsList />
 			
 			<Footer />
 		</MuiThemeProvider>
