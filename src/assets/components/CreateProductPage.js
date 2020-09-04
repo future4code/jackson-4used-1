@@ -10,10 +10,10 @@ import axios from "axios"
 const FormDiv = styled(Grid)({
     backgroundColor: "#FFFCEF",
     display: "grid",
+    gap: "1em",
     alignItems: "center",
     justifyItems: "center",
     width: "100vw",
-    height: "100vh",
     marginBottom: "50px"
 })
 
