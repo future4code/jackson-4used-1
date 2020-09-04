@@ -4,22 +4,23 @@ import Carousel from 'react-elastic-carousel'
 import MediaCard, { CardMedia } from "../assets/components/imgCard";
 
 const ContainerHome = styled.div`
-    margin: 2vw;
-    padding: 2vw;
+    max-width: 1024px;
+    margin: 24px auto;
+    padding: 0 24px;
 `
 
 const SlideShow = styled.div`
-    margin: 2vw;
+    margin: 2.5em 5em;
     padding: 2vw;
     background-color: #43ADA5;
 `
 
 const ProductsListContainer= styled.div`
-    margin: 2vw;
-    padding: 2vw;
-    display: grid;
-    gap: 1vw;
-    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
 `
 
 // Provavelmente terá o Carrossel alterado
