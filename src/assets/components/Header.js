@@ -97,7 +97,7 @@ export default class Header extends React.Component {
                     <SpanStyled>
                         Fale conosco
                     </SpanStyled>
-                    <IconButton aria-label="shopping cart" component="span"> {/*Se houver problemas com a cor, mudar para secondary*/}
+                    <IconButton aria-label="shopping cart" component="span" onClick={this.props.onClickShoppingCart}> {/*Se houver problemas com a cor, mudar para secondary*/}
                         <StyledBadge badgeContent={3} color="secondary">
                             <ShoppingCartIcon />
                         </StyledBadge>

@@ -9,6 +9,7 @@ import ProductsList from './assets/components/ProductsList'
 import HomePage from './components/HomePage';
 import LoginPage from './assets/components/LoginPage'
 import CreateProductPage from './assets/components/CreateProductPage'
+// import ShoppingCart from "./assets/components/shoppingCart"
 
 const myTheme = createMuiTheme ({
 	palette: {
@@ -46,6 +47,10 @@ export default class App extends React.Component {
 		this.setState({currentSection: "create-product-page"})
 	}
 
+	goToShoppingCart = () => {
+		this.setState({currentSection: "shopping-cart"})
+	}
+
 	render () {
 		const currentSection = this.state.currentSection
 		let selectedSection = ''
@@ -75,6 +80,10 @@ export default class App extends React.Component {
 					<CreateProductPage />
 				)
 				break
+			case "shopping-cart":
+				selectedSection = (
+					<shoppingCart />
+				)
 			default:
 				this.setState({currentSection: "home-page"})
 				break
@@ -87,6 +96,7 @@ export default class App extends React.Component {
 					onClickProducts={this.goToProductsList}
 					onClickLogin={this.goToLoginPage}
 					onClickSell={this.goToCreateProduct}
+					onClickShoppingCart={this.goToShoppingCart}
 				/>
 				{ selectedSection }
 				<Footer />
