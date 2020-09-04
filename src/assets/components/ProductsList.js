@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Popover from '@material-ui/core/Popover';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import MediaCard, { CardMedia } from './imgCard';
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Popover from '@material-ui/core/Popover'
+import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+import MediaCard, { CardMedia } from './imgCard'
 
 const All = styled.div`
     max-width: 1024px;
@@ -115,7 +115,7 @@ class ProductsList extends React.Component {
                               }}
                               transformOrigin={{
                                 vertical: 'top',
-                                horizontal: 'center',
+                                horizontal: 'left',
                               }}
                         >
                             <PriceFilterContainer>
@@ -148,7 +148,7 @@ class ProductsList extends React.Component {
                                 <FilterButtons>
                                     <Button 
                                         className={classes.capitalizedButton}
-                                        color="textSecundary"
+                                        color="primary"
                                     >
                                         Limpar
                                     </Button>
@@ -170,7 +170,7 @@ class ProductsList extends React.Component {
                         </Button>
                     </Filters>
                     <div>
-                        <FormControl className={classes.orderSelect}>
+                        <FormControl className={classes.orderSelect} color="secondary">
                             <InputLabel id="order-select-label">Ordenar por:</InputLabel>
                             <Select
                                 labelId="order-select-label"
