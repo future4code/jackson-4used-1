@@ -90,7 +90,7 @@ export default class Header extends React.Component {
                         Entrar
                     </SpanStyled>
                     <SpanStyled
-                        onClick={this.props.onClickCreateProduct}
+                        onClick={this.props.onClickSell}
                     >
                         Quero vender
                     </SpanStyled>
