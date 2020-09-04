@@ -44,6 +44,5 @@ export default function HomePage() {
                 <MediaCard />
             </ProductsListContainer>
         </ContainerHome>
-
     );
 }
