@@ -37,6 +37,7 @@ const SelectOption = styled(Select)({
     backgroundColor: "#FFFFFF",
 })
 
+
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/fourUsedOne/products"
 
 export default class CreateProductPage extends React.Component {
@@ -82,38 +83,6 @@ export default class CreateProductPage extends React.Component {
         console.log([event.target.name], event.target.value)
         this.setState({[event.target.name]: event.target.value})
     }
-
-    /* handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-    
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    }
-
-    handleFirstName = (event) => {
-        this.setState ({firstNameValue: event.target.value})
-    } */
 
     render() {
         return (

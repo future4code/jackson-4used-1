@@ -16,14 +16,16 @@ const All = styled.div`
  justify-content: space-between;
  align-items: center;
  padding: 8px 24px;
- margin: 0 24px;
+ margin: 0 auto;
  border-bottom: 1px solid #EEE9E9;
+ max-width: 1024px;
  /* font-family: 'Merriweather', serif; */
 `
 
 const Logo = styled.img`
     width: 50px;
     height: 50px;   
+    cursor: pointer;
 `
 const Container1 = styled.div`
     display: flex;
@@ -57,7 +59,10 @@ export default class Header extends React.Component {
         return (
             <All>
                 <Container1>
-                    <Logo src={Logotipo} />
+                    <Logo 
+                        src={Logotipo}
+                        onClick={this.props.onClickHome}
+                    />
                     <FormControl variant="outlined">
                         <OutlinedInput 
                             id="component-outlined" 
@@ -74,10 +79,24 @@ export default class Header extends React.Component {
                     </FormControl>
                 </Container1>
                 <Container2>
-                    <SpanStyled>Produtos</SpanStyled>
-                    <SpanStyled>Entrar</SpanStyled>
-                    <SpanStyled>Quero vender</SpanStyled>
-                    <SpanStyled>Fale conosco</SpanStyled>
+                    <SpanStyled
+                        onClick={this.props.onClickProducts}
+                    >
+                        Produtos
+                    </SpanStyled>
+                    <SpanStyled
+                        onClick={this.props.onClickLogin}
+                    >
+                        Entrar
+                    </SpanStyled>
+                    <SpanStyled
+                        onClick={this.props.onClickCreateProduct}
+                    >
+                        Quero vender
+                    </SpanStyled>
+                    <SpanStyled>
+                        Fale conosco
+                    </SpanStyled>
                     <IconButton aria-label="shopping cart" component="span"> {/*Se houver problemas com a cor, mudar para secondary*/}
                         <StyledBadge badgeContent={3} color="secondary">
                             <ShoppingCartIcon />

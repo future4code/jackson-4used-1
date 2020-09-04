@@ -9,9 +9,18 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { render, findByLabelText } from '@testing-library/react';
+import axios from "axios";
+import { baseUrl } from "../constants/axiosConstants";
+import styled from 'styled-components'
+
+const Div1 = styled.div`
+display:flex;
+justify-content:space-evenly;
+border-bottom: 1px solid #EEE9E9;`
 
 const useStyles = makeStyles({
   root: {
+    display:'flex',
     
     maxWidth: 345, //alterar valor
   },
@@ -25,7 +34,8 @@ export default function MediaCard() {
   
     
     return (
-      
+      <Div1>
+
       <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -45,6 +55,47 @@ export default function MediaCard() {
         </CardContent>
       </CardActionArea>  
     </Card>
+    
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1305222264" //alterar valor
+          title="Tv Samsung led" //alterar valor
+          />
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="h2">
+          Smart TV LED 43" UHD 4K Samsung 43TU7000 Crystal UHD,
+          HDR, Borda Infinita, Controle Remoto Único, Bluetooth - 2020
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          A Crystal UHD é a evolução das TVs 4K da Samsung, com cores mais apuradas,
+           design superior e a tela mais fina da categoria.
+          </Typography>
+        </CardContent>
+      </CardActionArea>  
+    </Card>
+    
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1305222264" //alterar valor
+          title="Tv Samsung led" //alterar valor
+          />
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="h2">
+          Smart TV LED 43" UHD 4K Samsung 43TU7000 Crystal UHD,
+          HDR, Borda Infinita, Controle Remoto Único, Bluetooth - 2020
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          A Crystal UHD é a evolução das TVs 4K da Samsung, com cores mais apuradas,
+           design superior e a tela mais fina da categoria.
+          </Typography>
+        </CardContent>
+      </CardActionArea>  
+    </Card>
+          </Div1>
   )
 
 }
