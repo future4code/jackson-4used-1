@@ -2,23 +2,23 @@
 // Atenção! Os valores expostos estão aí como guia. Alterar!
 
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import { render, findByLabelText } from '@testing-library/react';
 import axios from "axios"
 import { baseUrl } from "../constants/axiosConstants";
 import styled from 'styled-components'
+import DetailsProduct from './DetailsProduct'
 
 const Div1 = styled.div`
 display:flex;
 justify-content:space-evenly;
 border-bottom: 1px solid #EEE9E9;`
 
-const useStyles = makeStyles({
+const styles = theme => ({
   root: {
     display:'flex',
     minWidth: 240,
@@ -29,63 +29,61 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
-  const classes = useStyles()
+class ImgCard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {detail: false, }
+  }
+
+  MediaCard = (props) => {
+  const classes = styles()
+  }
   
-<<<<<<< HEAD
+  onClickCard = () => {
+    this.setState({
+      detail: !this.state.detail,
+    })
+  }
+    
+    render() {
+      const { classes } = this.props;
+
+      const detailPage = (id) => {
+        if(this.state.detail) {
+          return <DetailsProduct idPlaylist={id} />
+        }
+      }
+      return (
+        <Div1>
   
-    
-    return (
-      <Div1>
-
-      <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.imagem} //alterar valor
-          title={props.title} //alterar valor
-          />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          {props.description}
-
-          </Typography>
-          <Typography variant="body2" color="primary" component="p">
-          R${props.price}
-        
-          </Typography>
-        </CardContent>
-      </CardActionArea>  
-    </Card>
-    
-          </Div1>
-=======
-  return (
-    <Div1>
-
-      <Card className={classes.root}>
-        <CardActionArea>
+        <Card className={classes.root}>
+        <CardActionArea >
           <CardMedia
+            onClick={() => this.onClickCard(this.props.idProduct)}
             className={classes.media}
-            image="https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1305222264" //alterar valor
-            title="Tv Samsung led" //alterar valor
+            image={this.props.imagem} //alterar valor
+            title={this.props.title} //alterar valor
             />
-          <CardContent>
+          <CardContent >
             <Typography gutterBottom variant="h6" component="h2">
-            Smart TV LED 43" UHD 4K Samsung
+              {this.props.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-            A Crystal UHD é a evolução das TVs 4K da Samsung, com cores mais apuradas,
-            design superior e a tela mais fina da categoria.
+            {this.props.description}
+  
+            </Typography>
+            <Typography variant="body2" color="primary" component="p">
+            R${this.props.price}
+          
             </Typography>
           </CardContent>
-        </CardActionArea>  
+        </CardActionArea>
       </Card>
-    
-    </Div1>
->>>>>>> master
-  )
+      {detailPage(this.props.idProduct)}
+        </Div1>
+    )
+    }
+
 }
+
+export default withStyles(styles)( ImgCard )

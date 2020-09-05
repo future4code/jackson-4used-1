@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
+import axios from "axios"
+import { baseUrl } from "../constants/axiosConstants";
 
 
 const Img = styled.img`
@@ -55,7 +56,21 @@ const ContQuestion = styled.div`
     display: flex;
     
 `
+
 export default class DetailsProduct extends React.Component {
+    productsDetail = (id) => {
+        axios.get( `${baseUrl}/${id}` )
+    
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+    componentDidMount = () => {
+        this.productsDetail(this.props.idProduct)
+    }
     render() {
         return (
             <All>

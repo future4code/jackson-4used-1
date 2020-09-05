@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 import Carousel from 'react-elastic-carousel'
-import MediaCard, { CardMedia } from './imgCard'
+import ImgCard, { CardMedia } from './ImgCard'
 
 const ContainerHome = styled.div`
     max-width: 1024px;
@@ -36,12 +36,12 @@ export default function HomePage() {
                 </Carousel>
             </SlideShow>
             <ProductsListContainer>
-                <MediaCard />
-                <MediaCard />
-                <MediaCard />
-                <MediaCard />
-                <MediaCard />
-                <MediaCard />
+                <ImgCard />
+                <ImgCard />
+                <ImgCard />
+                <ImgCard />
+                <ImgCard />
+                <ImgCard />
             </ProductsListContainer>
         </ContainerHome>
     );
