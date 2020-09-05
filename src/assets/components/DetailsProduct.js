@@ -68,6 +68,8 @@ export default class DetailsProduct extends React.Component {
             paymentMethod: "",
             photos: [],
             price: 0,
+            firstNameValue: "",
+            lastNameValue: "",
         }
         ]
     }
@@ -83,6 +85,8 @@ export default class DetailsProduct extends React.Component {
                 paymentMethod: response.data.paymentMethod,
                 photos: response.data.photos,
                 price: response.data.price,
+                firstNameValue: response.data.sellerFirstName,
+                lastNameValue: response.data.sellerLastName
             })
         })
         .catch((error) => {
@@ -108,7 +112,8 @@ export default class DetailsProduct extends React.Component {
                 <Container>
                     <h2>{this.state.name}</h2>
                     <PriceStyled>{this.state.price}</PriceStyled>
-                    <p>{this.state.installments} X sem Juros</p>
+                    <p>{this.state.installments}x sem Juros</p>
+                    <h4>{this.state.firstNameValue} {this.state.lastNameValue}</h4>
                     <ButtonStyled>
                         <Button variant="contained" color="secondary">
                                 eu quero
