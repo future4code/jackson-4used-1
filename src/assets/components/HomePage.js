@@ -20,7 +20,7 @@ const SlideShow = styled.div`
 const ProductsListContainer= styled.div`
     margin-top: 1.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 1em;
 `

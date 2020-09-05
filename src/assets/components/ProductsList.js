@@ -49,7 +49,7 @@ const FilterButtons = styled.div`
 const ProductsListContainer= styled.div`
     margin-top: 1.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 1em;
 `
@@ -76,7 +76,11 @@ const styles = theme => ({
 class ProductsList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { anchorEl: null, open: false, listProduct: [] };
+        this.state = { 
+            anchorEl: null, 
+            open: false, 
+            listProduct: [] 
+        };
     }
 
     handleClick = event => {
