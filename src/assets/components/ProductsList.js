@@ -10,7 +10,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import MediaCard, { CardMedia } from './imgCard';
+import ImgCard, { CardMedia } from './ImgCard'
 import axios from 'axios'
 import { baseUrl } from "../constants/axiosConstants";
 
@@ -205,9 +205,8 @@ class ProductsList extends React.Component {
                 </ProductsHeader>
                 <ProductsListContainer>
                  {this.state.listProduct.map((product) => {
-                     console.log(product.photos)
                     return (
-                        <MediaCard 
+                        <ImgCard 
                             key={product.id}
                             imagem={product.photos}
                             title={product.name}
@@ -217,7 +216,7 @@ class ProductsList extends React.Component {
                         />
                     )
                 })}
-                    <MediaCard />
+                    
                 </ProductsListContainer>
             </All>
         );
