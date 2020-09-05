@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components"
 import Carousel from 'react-elastic-carousel'
 import ImgCard, { CardMedia } from './ImgCard'
+import axios from "axios"
+import { baseUrl } from "../constants/axiosConstants";
 
 const ContainerHome = styled.div`
     max-width: 1024px;
@@ -25,24 +27,51 @@ const ProductsListContainer= styled.div`
 
 // Provavelmente terá o Carrossel alterado
 
-export default function HomePage() {
-    return (
-        <ContainerHome> 
-            <SlideShow>
-                <Carousel itemsToShow={1} enableAutoPlay>
-                    <p>Imagem 1</p>
-                    <p>Imagem 2</p>
-                    <p>Imagem 3</p>
-                </Carousel>
-            </SlideShow>
-            <ProductsListContainer>
-                <ImgCard />
-                <ImgCard />
-                <ImgCard />
-                <ImgCard />
-                <ImgCard />
-                <ImgCard />
-            </ProductsListContainer>
-        </ContainerHome>
-    );
+export default class DetailsProduct extends React.Component {
+    state = {
+        listProductHome: [],
+    }
+    allProducts = () => {
+        axios.get( baseUrl )
+
+        .then((response) => {
+            this.setState({
+                listProductHome: response.data.products
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+    componentDidMount = () => {
+        this.allProducts()
+    }
+    render (){
+        return (
+            <ContainerHome> 
+                <SlideShow>
+                    <Carousel itemsToShow={1} enableAutoPlay>
+                        <p>Imagem 1</p>
+                        <p>Imagem 2</p>
+                        <p>Imagem 3</p>
+                    </Carousel>
+                </SlideShow>
+                <ProductsListContainer>
+                {this.state.listProductHome.map((product) => {
+                    return (
+                        <ImgCard 
+                            key={product.id}
+                            imagem={product.photos}
+                            title={product.name}
+                            idProduct={product.id}
+                            description={product.description}
+                            price={product.price}
+                        />
+                    )
+                })}
+                    
+                </ProductsListContainer>
+            </ContainerHome>
+       );
+    }
 }

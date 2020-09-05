@@ -32,7 +32,7 @@ const styles = theme => ({
 class ImgCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {detail: false, }
+    this.state = {detail: false, page: true, }
   }
 
   MediaCard = (props) => {
@@ -42,6 +42,7 @@ class ImgCard extends React.Component {
   onClickCard = () => {
     this.setState({
       detail: !this.state.detail,
+      page: !true
     })
   }
     
@@ -50,11 +51,11 @@ class ImgCard extends React.Component {
 
       const detailPage = (id) => {
         if(this.state.detail) {
-          return <DetailsProduct idPlaylist={id} />
+          return <DetailsProduct idProduct={id} />
         }
-      }
-      return (
-        <Div1>
+        if(this.state.page){
+          return (
+            <Div1>
   
         <Card className={classes.root}>
         <CardActionArea >
@@ -79,8 +80,15 @@ class ImgCard extends React.Component {
           </CardContent>
         </CardActionArea>
       </Card>
-      {detailPage(this.props.idProduct)}
+      
         </Div1>
+          )
+        }
+      }
+      return (
+        <div>
+        {detailPage(this.props.idProduct)}
+        </div>
     )
     }
 

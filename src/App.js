@@ -2,7 +2,7 @@ import React from 'react'
 import { createMuiTheme, MuiThemeProvider, AppBar } from "@material-ui/core"
 import Header from './assets/components/Header'
 import shoppingCart, {Appbar} from './assets/components/shoppingCart'
-import MediaCard, { CardMedia } from './assets/components/ImgCard'
+
 import DetailsProduct from './assets/components/DetailsProduct'
 import Footer from './assets/components/Footer'
 import ProductsList from './assets/components/ProductsList'

@@ -10,7 +10,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import ImgCard, { CardMedia } from './ImgCard';
+import ImgCard, { CardMedia } from './ImgCard'
 import axios from 'axios'
 import { baseUrl } from "../constants/axiosConstants";
 
