@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import axios from "axios"
+import { baseUrl } from "../constants/axiosConstants";
 
 
 
@@ -55,12 +57,47 @@ const ContQuestion = styled.div`
     display: flex;
     
 `
+
 export default class DetailsProduct extends React.Component {
+    state = {
+        productD: [
+            {category: "",
+            description: "",
+            installments: 0,
+            name: "",
+            paymentMethod: "",
+            photos: [],
+            price: 0,
+        }
+        ]
+    }
+    productsDetail = (id) => {
+        axios.get( `${baseUrl}/${id}` )
+    
+        .then((response) => {
+            this.setState({
+                category: response.data.category,
+                description: response.data.description,
+                installments: response.data.installments,
+                name: response.data.name,
+                paymentMethod: response.data.paymentMethod,
+                photos: response.data.photos,
+                price: response.data.price,
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+    componentDidMount = (props) => {
+        this.productsDetail(this.props.idProduct)
+    }
     render() {
+        console.log(this.state.productD)
         return (
             <All>
                 <ContainerImg>
-                    <Img src="https://cdn.iset.io/assets/54224/produtos/1192/6596094841-microfone-condensador-vocal-shure-pga48lc-dinamico-cardioide-1.jpg" />
+                    <Img src={this.state.photos} />
                     <ContQuestion>
                         <TextField id="outlined-basic" label="Pergunte ao vendedor" variant="outlined" />
                         <Button variant="outlined" color="secondary">
@@ -69,26 +106,29 @@ export default class DetailsProduct extends React.Component {
                     </ContQuestion>
                 </ContainerImg>
                 <Container>
-                    <h2>Microfone com fio</h2>
-                    <PriceStyled>R$ 89,90</PriceStyled>
-                    <p>2x de R$:44,95 s/ Juros</p>
+                    <h2>{this.state.name}</h2>
+                    <PriceStyled>{this.state.price}</PriceStyled>
+                    <p>{this.state.installments} X sem Juros</p>
                     <ButtonStyled>
                         <Button variant="contained" color="secondary">
-                            eu quero
-                        </Button>
+                                eu quero
+                            </Button>
                         <Button variant="outlined" color="secondary">
-                            adicionar ao carrinho
-                        </Button>
+                                adicionar ao carrinho
+                            </Button>
                         <Button variant="outlined" color="secondary">
-                             fazer oferta
-                        </Button>
+                                fazer oferta
+                            </Button>
                     </ButtonStyled>
                     <ContainerDescription>
-                        <p>Descrição</p>
+                        <p>{this.state.description}</p>
                     </ContainerDescription>
                     
                 </Container>
             </All>
+                    
+            
+            
         )
     }
 
