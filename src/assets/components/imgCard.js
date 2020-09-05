@@ -32,60 +32,32 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles()
   
-<<<<<<< HEAD
   
     
     return (
       <Div1>
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={props.imagem} //alterar valor
+              title={props.title} //alterar valor
+              />
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="h2">
+                {props.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+              {props.description}
 
-      <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.imagem} //alterar valor
-          title={props.title} //alterar valor
-          />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          {props.description}
-
-          </Typography>
-          <Typography variant="body2" color="primary" component="p">
-          R${props.price}
-        
-          </Typography>
-        </CardContent>
-      </CardActionArea>  
-    </Card>
-    
-          </Div1>
-=======
-  return (
-    <Div1>
-
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1305222264" //alterar valor
-            title="Tv Samsung led" //alterar valor
-            />
-          <CardContent>
-            <Typography gutterBottom variant="h6" component="h2">
-            Smart TV LED 43" UHD 4K Samsung
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-            A Crystal UHD é a evolução das TVs 4K da Samsung, com cores mais apuradas,
-            design superior e a tela mais fina da categoria.
-            </Typography>
-          </CardContent>
-        </CardActionArea>  
-      </Card>
-    
-    </Div1>
->>>>>>> master
+              </Typography>
+              <Typography variant="body2" color="primary" component="p">
+              R${props.price}
+            
+              </Typography>
+            </CardContent>
+          </CardActionArea>  
+        </Card>
+      </Div1>
   )
 }

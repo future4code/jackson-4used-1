@@ -22,15 +22,6 @@ const myTheme = createMuiTheme ({
 	}
 })
 
-<<<<<<< HEAD
-function App() {
-	return (
-        <MuiThemeProvider theme={myTheme}>
-			<Header />
-			{/* <HomePage />
-			
-			
-=======
 export default class App extends React.Component {
 	state = {
 		currentSection: ''
@@ -47,7 +38,6 @@ export default class App extends React.Component {
 	goToDetailsProduct = () => {
 		this.setState({currentSection: "details-product"})
 	}
->>>>>>> master
 
 	goToLoginPage = () => {
 		this.setState({currentSection: "login-page"})
@@ -57,18 +47,6 @@ export default class App extends React.Component {
 		this.setState({currentSection: "create-product-page"})
 	}
 
-<<<<<<< HEAD
-			< MediaCard/>
-			<AppBar/>
-			
-			<DetailsProduct /> */}
-			<ProductsList />
-			
-			<Footer />
-		</MuiThemeProvider>
-	)
-}
-=======
 	goToShoppingCart = () => {
 		this.setState({currentSection: "shopping-cart"})
 	}
@@ -106,11 +84,11 @@ export default class App extends React.Component {
 				selectedSection = (
 					<shoppingCart />
 				)
+				break
 			default:
 				this.setState({currentSection: "home-page"})
 				break
 		}
->>>>>>> master
 
 		return (
 			<MuiThemeProvider theme={myTheme}>

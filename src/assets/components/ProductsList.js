@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-<<<<<<< HEAD
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
@@ -14,19 +13,6 @@ import Select from '@material-ui/core/Select';
 import MediaCard, { CardMedia } from './imgCard';
 import axios from 'axios'
 import { baseUrl } from "../constants/axiosConstants";
-=======
-import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Popover from '@material-ui/core/Popover'
-import Button from '@material-ui/core/Button'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import MediaCard, { CardMedia } from './imgCard'
->>>>>>> master
 
 const All = styled.div`
     max-width: 1024px;
