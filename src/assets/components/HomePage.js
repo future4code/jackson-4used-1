@@ -4,6 +4,9 @@ import Carousel from 'react-elastic-carousel'
 import ImgCard, { CardMedia } from './ImgCard'
 import axios from "axios"
 import { baseUrl } from "../constants/axiosConstants";
+import Imagem1 from '../images/musica2.jpg'
+import Imagem2 from '../images/disco-de-vinil.jpg'
+import Imagem3 from '../images/violino.jpg'
 
 const ContainerHome = styled.div`
     max-width: 1024px;
@@ -14,7 +17,8 @@ const ContainerHome = styled.div`
 const SlideShow = styled.div`
     margin: 2.5em 5em;
     padding: 2vw;
-    background-color: #43ADA5;
+    background-color: #FFFCEF;
+    width: 800px;
 `
 
 const ProductsListContainer= styled.div`
@@ -24,7 +28,10 @@ const ProductsListContainer= styled.div`
     flex-wrap: wrap;
     gap: 1em;
 `
-
+const Img = styled.img`
+    width: 650px;
+    height: 200px;
+`
 // Provavelmente terá o Carrossel alterado
 
 export default class DetailsProduct extends React.Component {
@@ -51,9 +58,9 @@ export default class DetailsProduct extends React.Component {
             <ContainerHome> 
                 <SlideShow>
                     <Carousel itemsToShow={1} enableAutoPlay>
-                        <p>Imagem 1</p>
-                        <p>Imagem 2</p>
-                        <p>Imagem 3</p>
+                        <Img src={Imagem1} />
+                        <Img src={Imagem2} />
+                        <Img src={Imagem3} />
                     </Carousel>
                 </SlideShow>
                 <ProductsListContainer>
@@ -68,8 +75,7 @@ export default class DetailsProduct extends React.Component {
                             price={product.price}
                         />
                     )
-                })}
-                    
+                })}  
                 </ProductsListContainer>
             </ContainerHome>
        );
