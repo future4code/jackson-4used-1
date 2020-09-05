@@ -58,7 +58,7 @@ const styles = theme => ({
     typography: {
         padding: theme.spacing(1),
     },
-    campoPreco: {
+    priceInput: {
         margin: theme.spacing(1),
         width: '10ch',
     },
@@ -79,7 +79,9 @@ class ProductsList extends React.Component {
         this.state = { 
             anchorEl: null, 
             open: false, 
-            listProduct: [] 
+            listProducts: [],
+            minValue: undefined,
+            maxValue: undefined
         };
     }
 
@@ -89,6 +91,7 @@ class ProductsList extends React.Component {
 
     handleRequestClose = () => {
         this.setState({ open: false, anchorEl: null });
+        this.clearFilterValues()
     };
 
     allProducts = () => {
@@ -96,7 +99,7 @@ class ProductsList extends React.Component {
 
         .then((response) => {
             this.setState({
-                listProduct: response.data.products
+                listProducts: response.data.products
             })
         })
         .catch((error) => {
@@ -106,12 +109,43 @@ class ProductsList extends React.Component {
     componentDidMount = () => {
         this.allProducts()
     }
+
+    filterProducts = () => {
+        const {listProducts, minValue, maxValue} = this.state
+        let filteredProducts = listProducts.filter(product => {
+            return product.price > (minValue || 0)
+        }).filter(product => {
+            return product.price < (maxValue || Infinity)
+        })
+        this.setState({listProducts: filteredProducts})
+    }
+
+    onChangeMinFilter = e => {
+        const value = Number(e.target.value)
+        this.setState({minValue: value})
+    }
+
+    onChangeMaxFilter = e => {
+        const value = Number(e.target.value)
+        this.setState({maxValue: value})
+    }
+
+    clearFilterValues = () => {
+        this.setState({
+            minValue: undefined,
+            maxValue: undefined
+         })
+    }
+
+    clearFilter = () => {
+        this.allProducts()
+    }
+
     render () {
         const open = this.state.anchorEl === null ? false : true;
         const id = open ? "simple-popover" : undefined;
         const { classes } = this.props;
-        
-        
+
         return (
             <All>
                 <ProductsHeader>
@@ -142,28 +176,30 @@ class ProductsList extends React.Component {
                         >
                             <PriceFilterContainer>
                                 <PriceForm>
-                                    <FormControl className={classes.campoPreco} variant="outlined">
-                                        <InputLabel htmlFor="preco-minimo">De</InputLabel>
+                                    <FormControl className={classes.priceInput} variant="outlined">
+                                        <InputLabel htmlFor="min-price">De</InputLabel>
                                         <OutlinedInput
-                                            id="preco-minimo"
-                                            value="50"
-                                            // onChange={}
+                                            id="min-price"
+                                            type="number"
+                                            value={this.state.minValue}
+                                            onChange={this.onChangeMinFilter}
                                             startAdornment={
                                                 <InputAdornment position="start">R$</InputAdornment>
                                             }
-                                            labelWidth={25}
+                                            labelWidth={40}
                                         />
                                     </FormControl>
-                                    <FormControl className={classes.campoPreco} variant="outlined">
-                                        <InputLabel htmlFor="preco-maximo">Até</InputLabel>
+                                    <FormControl className={classes.priceInput} variant="outlined">
+                                        <InputLabel htmlFor="max-price">Até</InputLabel>
                                         <OutlinedInput
-                                            id="preco-maximo"
-                                            value="5000"
-                                            // onChange={}
+                                            id="max-price"
+                                            type="number"
+                                            value={this.state.maxValue}
+                                            onChange={this.onChangeMaxFilter}
                                             startAdornment={
                                                 <InputAdornment position="start">R$</InputAdornment>
                                             }
-                                            labelWidth={30}
+                                            labelWidth={40}
                                         />
                                     </FormControl>
                                 </PriceForm>
@@ -171,12 +207,14 @@ class ProductsList extends React.Component {
                                     <Button 
                                         className={classes.capitalizedButton}
                                         color="primary"
+                                        onClick={this.clearFilterValues}
                                     >
                                         Limpar
                                     </Button>
                                     <Button 
                                         className={classes.capitalizedButton}
                                         color="secondary"
+                                        onClick={this.filterProducts}
                                     >
                                         Aplicar
                                     </Button>
@@ -187,6 +225,7 @@ class ProductsList extends React.Component {
                             className={classes.capitalizedButton}
                             color='primary'
                             size='small'
+                            onClick={this.clearFilter}
                         >
                             Limpar Filtros
                         </Button>
@@ -208,7 +247,7 @@ class ProductsList extends React.Component {
                     </div>
                 </ProductsHeader>
                 <ProductsListContainer>
-                 {this.state.listProduct.map((product) => {
+                 {this.state.listProducts.map((product) => {
                     return (
                         <ImgCard 
                             key={product.id}
