@@ -49,7 +49,7 @@ export default class CreateProductPage extends React.Component {
         descriptionValue: "",
         urlLinkValue: "",
         paymentMethodValue: "",
-        installmentsValue: 0
+        installmentsValue: 1
     }
 
     registerNewProduct = () => {
@@ -65,7 +65,7 @@ export default class CreateProductPage extends React.Component {
             installments: this.state.installmentsValue
         }
 
-        axios.post(`${baseUrl}`, body)
+        axios.post( baseUrl, body)
         .then((response) => {
             console.log(response)
         })
@@ -115,6 +115,15 @@ export default class CreateProductPage extends React.Component {
     }
 
     render() {
+        console.log(this.state.firstNameValue)
+        console.log(this.state.lastNameValue)
+        console.log(this.state.productNameValue)
+        console.log(this.state.categoryValue)
+        console.log(this.state.priceValue)
+        console.log(this.state.descriptionValue)
+        console.log(this.state.urlLinkValue)
+        console.log(this.state.paymentMethodValue)
+        console.log(this.state.installmentsValue)
 
         return (
             <div>
@@ -161,6 +170,21 @@ export default class CreateProductPage extends React.Component {
                         </SelectOption>
                     </FormControl>
                     <Button variant="contained" color="secondary" onClick={this.registerNewProduct}>Enviar</Button>
+                    <InputLabel id="payment-method-label">Quantidade de Parcelas</InputLabel>
+                        <SelectOption
+                            name="paymentMethod"
+                            labelId="form-of-payment-label"
+                            label="Forma de pagamento"
+                            native
+                            variant="outlined"
+                            value={this.state.installmentsValue} 
+                            onChange={this.handleInstallmentsChange}
+                        >
+                            <option value=""/>
+                            <option value="card">1</option>
+                            <option value="billet">2</option>
+                            <option value="transfer">3</option>
+                        </SelectOption>
                 </FormDiv>
             </div>
         )
