@@ -97,26 +97,41 @@ class ProductsList extends React.Component {
         axios.get( baseUrl )
 
         .then((response) => {
+            const {searchFilter} = this.props
+            const allProducts = response.data.products
+            let filteredBySearch = allProducts.filter(product => {
+                return (
+                    product.name.toLowerCase().indexOf(
+                        searchFilter.toLowerCase()
+                    ) > -1
+                )
+            })  
+            
             this.setState({
-                listProducts: response.data.products
+                listProducts: filteredBySearch
             })
         })
         .catch((error) => {
             console.log(error)
         })
     }
+
     componentDidMount = () => {
         this.allProducts()
     }
 
-    filterProducts = () => {
+    componentDidUpdate = () => {
+        this.allProducts()
+    }
+
+    filterProductsByPrice = () => {
         const {listProducts, minValue, maxValue} = this.state
-        let filteredProducts = listProducts.filter(product => {
+        let filteredByPrice = listProducts.filter(product => {
             return product.price > (minValue || 0)
         }).filter(product => {
             return product.price < (maxValue || Infinity)
         })
-        this.setState({listProducts: filteredProducts})
+        this.setState({listProducts: filteredByPrice})
         this.handleRequestClose()
     }
 
@@ -214,7 +229,7 @@ class ProductsList extends React.Component {
                                     <Button 
                                         className={classes.capitalizedButton}
                                         color="secondary"
-                                        onClick={this.filterProducts}
+                                        onClick={this.filterProductsByPrice}
                                     >
                                         Aplicar
                                     </Button>

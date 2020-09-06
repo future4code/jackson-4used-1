@@ -67,10 +67,18 @@ export default class Header extends React.Component {
                         <OutlinedInput 
                             id="component-outlined" 
                             placeholder= "busca..."
+                            type="text"
+                            name="search"
+                            value={this.props.handleSearchValue}
+                            onChange={this.props.onChangeSearch}
                             margin="dense"
                             endAdornment={
                                 <InputAdornment position="end">
-                                    <IconButton aria-label="search" size="small">
+                                    <IconButton 
+                                        aria-label="search" 
+                                        size="small"
+                                        onClick={this.props.goToSearchResults}
+                                    >
                                         <SearchIcon />
                                     </IconButton>
                                 </InputAdornment>
