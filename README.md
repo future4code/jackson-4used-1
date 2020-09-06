@@ -11,21 +11,21 @@ Esse é um projeto em grupo, segue o nome da galera:
   - Michelle Louzada Carballo
   - Roberto de Abreu Salgado
 
-### O que funciona:
+## O que funciona:
 
--Página Home com carrosel de fotos, e lista de produtos;
--Descrição do produto quando clica no card da imagem;
--Página de produtos com a lista de produtos;
--Filtro de header que busca pelo nome com press Enter;
--Filtro da página de produtos que filtra por preço, nome e categoria;
--Integração com a API pra dispor os produtos;
--Quero vender com inputs funcionais, ele adiciona o produto preenchendo todo o formulário;
--Página de Login não funcional;
+- Página Home com carrosel de fotos, e lista de produtos;
+- Descrição do produto quando clica no card da imagem;
+- Página de produtos com a lista de produtos;
+- Filtro de header que busca pelo nome com press Enter;
+- Filtro da página de produtos que filtra por preço, nome e categoria;
+- Integração com a API pra dispor os produtos;
+- Quero vender com inputs funcionais, ele adiciona o produto preenchendo todo o formulário;
+- Página de Login não funcional;
 
 ### O que não funciona:
 
--A renderização dos detalhes do produto;
--Carrinho de compras;
+- A renderização dos detalhes do produto;
+- Carrinho de compras;
 
 ### Link do Surge:
 
@@ -48,9 +48,9 @@ Esse é um projeto em grupo, segue o nome da galera:
 
 ### Bibliotecas usadas
 
--npm install styled-components
--npm install axios
--npm install @material-ui/core
--npm install @material-ui/icons
--npm install react-elastic-carousel
+- npm install styled-components
+- npm install axios
+- npm install @material-ui/core
+- npm install @material-ui/icons
+- npm install react-elastic-carousel
 
