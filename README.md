@@ -11,7 +11,7 @@ Esse é um projeto em grupo, segue o nome da galera:
   - Michelle Louzada Carballo
   - Roberto de Abreu Salgado
 
-## O que funciona:
+### O que funciona:
 
 - Página Home com carrosel de fotos, e lista de produtos;
 - Descrição do produto quando clica no card da imagem;
@@ -34,7 +34,7 @@ Esse é um projeto em grupo, segue o nome da galera:
 
 - https://coolors.co/202020-313139-393943-43434f-fffcef-ffffff-43ada5-fcca64-f04e3e
 
-## Leyout
+### Leyout
 
 - Baseado no enjoei.com.br
 
