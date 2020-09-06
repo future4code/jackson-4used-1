@@ -54,8 +54,21 @@ const StyledBadge = withStyles((theme) => ({
     },
 }))(Badge)
 
-export default class Header extends React.Component {    
+export default class Header extends React.Component {
+    constructor(props) {
+        super(props)
+        this.onKeyUp = this.onKeyUp.bind(this)
+      }
+    
+      onKeyUp(event) {
+        if (event.key === "Enter") {
+            this.props.goToSearchResults()
+        }
+      }
+
+
     render() {
+
         return (
             <All>
                 <Container1>
@@ -71,6 +84,7 @@ export default class Header extends React.Component {
                             name="search"
                             value={this.props.handleSearchValue}
                             onChange={this.props.onChangeSearch}
+                            onKeyPress={this.onKeyUp}
                             margin="dense"
                             endAdornment={
                                 <InputAdornment position="end">
