@@ -17,7 +17,7 @@ export default function ThankYou() {
           src={Logo}
           alt="Volte sempre!"
         />
-          <h2>Volte sempre!</h2>
+          <h2>Mercadoria registrada com sucesso!</h2>
  
     </ThankYouPage>
   );
