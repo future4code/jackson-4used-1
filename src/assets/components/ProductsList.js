@@ -58,7 +58,7 @@ const styles = theme => ({
     typography: {
         padding: theme.spacing(1),
     },
-    priceInput: {
+        priceInput: {
         margin: theme.spacing(1),
         width: '16ch',
     },
@@ -81,7 +81,8 @@ class ProductsList extends React.Component {
             open: false, 
             listProducts: [],
             minValue: '',
-            maxValue: ''
+            maxValue: '',
+            sortValue: ''
         };
     }
 
@@ -105,11 +106,34 @@ class ProductsList extends React.Component {
                         searchFilter.toLowerCase()
                     ) > -1
                 )
-            })  
-            
-            this.setState({
-                listProducts: filteredBySearch
             })
+
+            let sortedList = [...filteredBySearch]
+            switch (this.state.sortValue) {
+                case "name":
+                    sortedList.sort((a, b) => {
+                        return (
+                            a.name > b.name 
+                            ? 1 : 
+                            a.name < b.name 
+                            ? -1 : 0
+                        )
+                    })
+                    break
+                case "highest-price":
+                    sortedList.sort((b, a) => {
+                        return a.price - b.price
+                    })
+                    break
+                case "lowest-price":
+                    sortedList.sort((a, b) => {
+                        return a.price - b.price
+                    })
+                    break
+                default:
+                    break
+            }
+            this.setState({listProducts: sortedList})
         })
         .catch((error) => {
             console.log(error)
@@ -118,11 +142,10 @@ class ProductsList extends React.Component {
 
     componentDidMount = () => {
         this.allProducts()
+        this.setState({ sortValue: '' })
     }
 
-    componentDidUpdate = () => {
-        this.allProducts()
-    }
+    componentDidUpdate = () => { this.allProducts() }
 
     filterProductsByPrice = () => {
         const {listProducts, minValue, maxValue} = this.state
@@ -156,11 +179,15 @@ class ProductsList extends React.Component {
         this.allProducts()
     }
 
+    onChangeSort = e => {
+        this.setState({sortValue: e.target.value})
+    }
+
     render () {
         const open = this.state.anchorEl === null ? false : true;
         const id = open ? "simple-popover" : undefined;
-        const { classes } = this.props;
-
+        const { classes } = this.props;        
+        
         return (
             <All>
                 <ProductsHeader>
@@ -247,16 +274,16 @@ class ProductsList extends React.Component {
                     </Filters>
                     <div>
                         <FormControl className={classes.orderSelect} color="secondary">
-                            <InputLabel id="order-select-label">Ordenar por:</InputLabel>
+                            <InputLabel id="sort-select-label">Ordenar por:</InputLabel>
                             <Select
-                                labelId="order-select-label"
-                                id="order-select"
-                                value={'order'}
-                                // onChange={handleChange}
+                                labelId="sort-select-label"
+                                id="sort-select"
+                                autoWidth={true}
+                                onChange={this.onChangeSort}
                             >
                                 <MenuItem value={'name'}>Nome</MenuItem>
-                                <MenuItem value={'price'}>Preço</MenuItem>
-                                <MenuItem value={'category'}>Categoria</MenuItem>
+                                <MenuItem value={'highest-price'}>Maior Preço</MenuItem>
+                                <MenuItem value={'lowest-price'}>Menor Preço</MenuItem>
                             </Select>
                         </FormControl>
                     </div>
