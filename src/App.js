@@ -24,7 +24,9 @@ const myTheme = createMuiTheme ({
 
 export default class App extends React.Component {
 	state = {
-		currentSection: ''
+		currentSection: '',
+		searchValue: '',
+		searchFilter: ''
 	}
 
 	goToHomePage = () => {
@@ -32,7 +34,10 @@ export default class App extends React.Component {
 	}
 	
 	goToProductsList = () => {
-		this.setState({currentSection: "products-list"})
+		this.setState({
+			currentSection: "products-list",
+			searchFilter: ""
+		})
 	}
 
 	goToDetailsProduct = () => {
@@ -51,6 +56,20 @@ export default class App extends React.Component {
 		this.setState({currentSection: "shopping-cart"})
 	}
 
+	onChangeSearch = e => {
+		this.setState({searchValue: e.target.value})
+	}
+
+	filterProductsBySearch = () => {
+		const searchValue = this.state.searchValue
+		this.setState({
+			searchFilter: searchValue,
+			currentSection: "products-list",
+			searchValue: ""
+		})
+
+	}
+
 	render () {
 		const currentSection = this.state.currentSection
 		let selectedSection = ''
@@ -62,7 +81,9 @@ export default class App extends React.Component {
 				break
 			case "products-list":
 				selectedSection = (
-					<ProductsList />
+					<ProductsList 
+						searchFilter={this.state.searchFilter}
+					/>
 				)
 				break
 			case "details-product":
@@ -98,6 +119,9 @@ export default class App extends React.Component {
 					onClickLogin={this.goToLoginPage}
 					onClickSell={this.goToCreateProduct}
 					onClickShoppingCart={this.goToShoppingCart}
+					handleSearchValue={this.state.searchValue}
+					onChangeSearch={this.onChangeSearch}
+					goToSearchResults={this.filterProductsBySearch}
 				/>
 				{ selectedSection }
 				<Footer />

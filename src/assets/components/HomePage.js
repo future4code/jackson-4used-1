@@ -36,14 +36,14 @@ const Img = styled.img`
 
 export default class DetailsProduct extends React.Component {
     state = {
-        listProductHome: [],
+        listProductsHome: [],
     }
     allProducts = () => {
         axios.get( baseUrl )
 
         .then((response) => {
             this.setState({
-                listProductHome: response.data.products
+                listProductsHome: response.data.products
             })
         })
         .catch((error) => {
@@ -64,7 +64,7 @@ export default class DetailsProduct extends React.Component {
                     </Carousel>
                 </SlideShow>
                 <ProductsListContainer>
-                {this.state.listProductHome.map((product) => {
+                {this.state.listProductsHome.map((product) => {
                     return (
                         <ImgCard 
                             key={product.id}
