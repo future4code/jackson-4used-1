@@ -60,7 +60,7 @@ const styles = theme => ({
     },
     priceInput: {
         margin: theme.spacing(1),
-        width: '10ch',
+        width: '16ch',
     },
     priceFilter: {
         backgroundColor: '#43434FCC',
@@ -80,8 +80,8 @@ class ProductsList extends React.Component {
             anchorEl: null, 
             open: false, 
             listProducts: [],
-            minValue: undefined,
-            maxValue: undefined
+            minValue: '',
+            maxValue: ''
         };
     }
 
@@ -91,7 +91,6 @@ class ProductsList extends React.Component {
 
     handleRequestClose = () => {
         this.setState({ open: false, anchorEl: null });
-        this.clearFilterValues()
     };
 
     allProducts = () => {
@@ -118,6 +117,7 @@ class ProductsList extends React.Component {
             return product.price < (maxValue || Infinity)
         })
         this.setState({listProducts: filteredProducts})
+        this.handleRequestClose()
     }
 
     onChangeMinFilter = e => {
@@ -132,8 +132,8 @@ class ProductsList extends React.Component {
 
     clearFilterValues = () => {
         this.setState({
-            minValue: undefined,
-            maxValue: undefined
+            minValue: '',
+            maxValue: ''
          })
     }
 
@@ -186,7 +186,7 @@ class ProductsList extends React.Component {
                                             startAdornment={
                                                 <InputAdornment position="start">R$</InputAdornment>
                                             }
-                                            labelWidth={40}
+                                            labelWidth={25}
                                         />
                                     </FormControl>
                                     <FormControl className={classes.priceInput} variant="outlined">
@@ -199,7 +199,7 @@ class ProductsList extends React.Component {
                                             startAdornment={
                                                 <InputAdornment position="start">R$</InputAdornment>
                                             }
-                                            labelWidth={40}
+                                            labelWidth={30}
                                         />
                                     </FormControl>
                                 </PriceForm>
