@@ -69,7 +69,7 @@ export default class DetailsProduct extends React.Component {
             this.setState({
                 productD: {...response.data}
             })
-            console.log(this.state.productD)
+            // console.log(this.state.productD)
         })
         .catch((error) => {
             console.log(error)
@@ -105,19 +105,22 @@ export default class DetailsProduct extends React.Component {
                     <h4>{ seller }</h4>
                     <ButtonStyled>
                         <Button variant="contained" color="secondary">
-                                eu quero
-                            </Button>
+                            eu quero
+                        </Button>
+                        <Button 
+                            variant="outlined" 
+                            color="secondary"
+                            onClick={() => this.props.addToShoppingCart(this.state.productD)}
+                        >
+                            adicionar ao carrinho
+                        </Button>
                         <Button variant="outlined" color="secondary">
-                                adicionar ao carrinho
-                            </Button>
-                        <Button variant="outlined" color="secondary">
-                                fazer oferta
-                            </Button>
+                            fazer oferta
+                        </Button>
                     </ButtonStyled>
                     <ContainerDescription>
                         <p>{this.state.productD.description}</p>
                     </ContainerDescription>
-                    
                 </Container>
             </All>
                     

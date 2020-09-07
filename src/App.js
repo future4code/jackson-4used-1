@@ -1,7 +1,7 @@
 import React from 'react'
 import { createMuiTheme, MuiThemeProvider, AppBar } from "@material-ui/core"
 import Header from './assets/components/Header'
-import shoppingCart, {Appbar} from './assets/components/shoppingCart'
+import ShoppingCart, {Appbar} from './assets/components/ShoppingCart'
 
 import DetailsProduct from './assets/components/DetailsProduct'
 import Footer from './assets/components/Footer'
@@ -24,12 +24,19 @@ const myTheme = createMuiTheme ({
 
 export default class App extends React.Component {
 	state = {
-		currentSection: '',
+		currentSection: "shopping-cart",
 		searchValue: '',
 		searchFilter: '',
 		productId: '',
-		shoppingCart: [],
-		shoppingCartOpen: false
+		shoppingCart: []
+	}
+
+	componentDidUpdate() {
+		localStorage.setItem('shoppingCart', JSON.stringify(this.state.shoppingCart))
+	}
+
+	componentDidMount() {
+		this.setState({shoppingCart: JSON.parse(localStorage.getItem('shoppingCart')) || []})
 	}
 
 	goToHomePage = () => {
@@ -82,13 +89,25 @@ export default class App extends React.Component {
 		this.goToProductDetails()
 	  }
 
-	  openShoppingCart = () => {
-		  this.setState({shoppingCartOpen: !this.state.shoppingCartOpen})
-	  }
+	goToShoppingCart = () => {
+		this.setState({currentSection: "shopping-cart"})
+	}
 
-	  addToShoppingCart = (product) => {
+	addToShoppingCart = (product) => {
+		this.state.shoppingCart.push(product)
+		// console.log(this.state.shoppingCart)
+		alert(`Produto ${product.name} adicionado ao carrinho!`)
+		this.setState({currentSection: "home-page"})
+	}
 
-	  }
+	deleteShoppingCartItem = (id) => {
+		const newCart = this.state.shoppingCart.filter(item => {
+			return (item.id === id) ? false : true
+		});
+		this.setState({shoppingCart: newCart});
+	};
+
+
 
 	render () {
 		const currentSection = this.state.currentSection
@@ -113,6 +132,7 @@ export default class App extends React.Component {
 				selectedSection = (
 					<DetailsProduct 
 						idProduct={this.state.productId}
+						addToShoppingCart={this.addToShoppingCart}
 					/>
 				)
 				break
@@ -128,7 +148,10 @@ export default class App extends React.Component {
 				break
 			case "shopping-cart":
 				selectedSection = (
-					<shoppingCart />
+					<ShoppingCart 
+						shoppingCart={this.state.shoppingCart}
+						deleteShoppingCartItem={this.deleteShoppingCartItem}
+					/>
 				)
 				break
 			default:
@@ -147,6 +170,8 @@ export default class App extends React.Component {
 					handleSearchValue={this.state.searchValue}
 					onChangeSearch={this.onChangeSearch}
 					goToSearchResults={this.filterProductsBySearch}
+					shoppingCart={this.state.shoppingCart}
+					goToShoppingCart={this.goToShoppingCart}
 				/>
 				{ selectedSection }
 				<Footer />
