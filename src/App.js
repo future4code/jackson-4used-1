@@ -26,7 +26,8 @@ export default class App extends React.Component {
 	state = {
 		currentSection: '',
 		searchValue: '',
-		searchFilter: ''
+		searchFilter: '',
+		productId: ''
 	}
 
 	goToHomePage = () => {
@@ -38,10 +39,6 @@ export default class App extends React.Component {
 			currentSection: "products-list",
 			searchFilter: ""
 		})
-	}
-
-	goToDetailsProduct = () => {
-		this.setState({currentSection: "details-product"})
 	}
 
 	goToLoginPage = () => {
@@ -70,25 +67,43 @@ export default class App extends React.Component {
 
 	}
 
+	goToProductDetails = () => {
+		this.setState({currentSection: "details-product"})
+	}
+
+	onClickCard = (id) => {
+		this.setState({
+		//   detail: !this.state.detail,
+		//   page: !true
+		productId: id
+		})
+		this.goToProductDetails()
+	  }
+
 	render () {
 		const currentSection = this.state.currentSection
 		let selectedSection = ''
 		switch (currentSection) {
 			case "home-page":
 				selectedSection = (
-					<HomePage />
+					<HomePage 
+						openProductDetails={this.onClickCard}
+					/>
 				)
 				break
 			case "products-list":
 				selectedSection = (
 					<ProductsList 
 						searchFilter={this.state.searchFilter}
+						openProductDetails={this.onClickCard}
 					/>
 				)
 				break
 			case "details-product":
 				selectedSection = (
-					<DetailsProduct />
+					<DetailsProduct 
+						idProduct={this.state.productId}
+					/>
 				)
 				break
 			case "login-page":

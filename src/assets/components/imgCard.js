@@ -32,66 +32,54 @@ const styles = theme => ({
 class ImgCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {detail: false, page: true, }
+    // this.state = {detail: false, page: true, }
   }
 
-  MediaCard = (props) => {
-  const classes = styles()
-  }
+  // MediaCard = (props) => {
+  //   const classes = styles()
+  // }
   
-  onClickCard = () => {
-    this.setState({
-      detail: !this.state.detail,
-      page: !true
-    })
-  }
+  // onClickCard = (productId) => {
+  //   // this.setState({
+  //   //   detail: !this.state.detail,
+  //   //   page: !true
+  //   // })
+  //   this.props.openProductDetails()
+  // }
     
-    render() {
-      const { classes } = this.props;
+  render() {
+    const { classes } = this.props;
 
-      const detailPage = (id) => {
-        if(this.state.detail) {
-          return <DetailsProduct idProduct={id} />
-        }
-        if(this.state.page){
-          return (
-            <Div1>
-  
+    return (
+      <Div1>
+
         <Card className={classes.root}>
-        <CardActionArea >
-          <CardMedia
-            onClick={() => this.onClickCard(this.props.idProduct)}
-            className={classes.media}
-            image={this.props.imagem} //alterar valor
-            title={this.props.title} //alterar valor
-            />
-          <CardContent >
-            <Typography gutterBottom variant="h6" component="h2">
-              {this.props.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-            {this.props.description}
-  
-            </Typography>
-            <Typography variant="body2" color="primary" component="p">
-            R${this.props.price}
-          
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-      
-        </Div1>
-          )
-        }
-      }
-      return (
-        <div>
-        {detailPage(this.props.idProduct)}
-        </div>
-    )
-    }
+          <CardActionArea >
+            <CardMedia
+              onClick={() => this.props.openProductDetails(this.props.idProduct)}
+              className={classes.media}
+              image={this.props.imagem} //alterar valor
+              title={this.props.title} //alterar valor
+              />
+            <CardContent >
+              <Typography gutterBottom variant="h6" component="h2">
+                {this.props.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+              {this.props.description}
+    
+              </Typography>
+              <Typography variant="body2" color="primary" component="p">
+              R${this.props.price}
+            
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
 
+      </Div1>
+    )
+  }
 }
 
 export default withStyles(styles)( ImgCard )
