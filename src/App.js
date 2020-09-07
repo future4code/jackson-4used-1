@@ -27,7 +27,9 @@ export default class App extends React.Component {
 		currentSection: '',
 		searchValue: '',
 		searchFilter: '',
-		productId: ''
+		productId: '',
+		shoppingCart: [],
+		shoppingCartOpen: false
 	}
 
 	goToHomePage = () => {
@@ -78,6 +80,14 @@ export default class App extends React.Component {
 		productId: id
 		})
 		this.goToProductDetails()
+	  }
+
+	  openShoppingCart = () => {
+		  this.setState({shoppingCartOpen: !this.state.shoppingCartOpen})
+	  }
+
+	  addToShoppingCart = (product) => {
+
 	  }
 
 	render () {

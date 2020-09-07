@@ -27,7 +27,7 @@ const styles = theme => ({
   },
 });
 
-class Appbar extends React.Component {
+class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,4 +64,4 @@ class Appbar extends React.Component {
   }
 }
 
-export default withStyles(styles)(Appbar);
+export default withStyles(styles)(ShoppingCart);

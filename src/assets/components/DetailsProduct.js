@@ -60,35 +60,16 @@ const ContQuestion = styled.div`
 
 export default class DetailsProduct extends React.Component {
     state = {
-        productD: [
-            {
-                category: "",
-                description: "",
-                installments: 0,
-                name: "",
-                paymentMethod: "",
-                photos: [],
-                price: 0,
-                firstNameValue: "",
-                lastNameValue: "",
-            }
-        ]
+        productD: {}
     }
     productsDetail = (id) => {
         axios.get( `${baseUrl}/${id}` )
     
         .then((response) => {
             this.setState({
-                category: response.data.category,
-                description: response.data.description,
-                installments: response.data.installments,
-                name: response.data.name,
-                paymentMethod: response.data.paymentMethod,
-                photos: response.data.photos,
-                price: response.data.price,
-                firstNameValue: response.data.sellerFirstName,
-                lastNameValue: response.data.sellerLastName
+                productD: {...response.data}
             })
+            console.log(this.state.productD)
         })
         .catch((error) => {
             console.log(error)
@@ -98,11 +79,17 @@ export default class DetailsProduct extends React.Component {
         this.productsDetail(this.props.idProduct)
     }
     render() {
-        console.log(this.state.productD)
+
+        const seller = (this.state.productD.sellerFirstName || 'Curadoria' )
+            + ' ' 
+            + (this.state.productD.sellerLastName || '4USED')
+
+
+
         return (
             <All>
                 <ContainerImg>
-                    <Img src={this.state.photos} />
+                    <Img src={this.state.productD.photos} />
                     <ContQuestion>
                         <TextField id="outlined-basic" label="Pergunte ao vendedor" variant="outlined" />
                         <Button variant="outlined" color="secondary">
@@ -111,10 +98,11 @@ export default class DetailsProduct extends React.Component {
                     </ContQuestion>
                 </ContainerImg>
                 <Container>
-                    <h2>{this.state.name}</h2>
-                    <PriceStyled>R$ {this.state.price}</PriceStyled>
-                    <p>{this.state.installments}x sem Juros</p>
-                    <h4>{this.state.firstNameValue} {this.state.lastNameValue}</h4>
+                    <h2>{this.state.productD.name}</h2>
+                    <PriceStyled>R$ {this.state.productD.price}</PriceStyled>
+                    <p>{this.state.productD.installments}x sem Juros</p>
+                    <h3>Vendedor(a):</h3>
+                    <h4>{ seller }</h4>
                     <ButtonStyled>
                         <Button variant="contained" color="secondary">
                                 eu quero
@@ -127,7 +115,7 @@ export default class DetailsProduct extends React.Component {
                             </Button>
                     </ButtonStyled>
                     <ContainerDescription>
-                        <p>{this.state.description}</p>
+                        <p>{this.state.productD.description}</p>
                     </ContainerDescription>
                     
                 </Container>
