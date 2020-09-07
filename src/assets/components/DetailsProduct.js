@@ -61,16 +61,17 @@ const ContQuestion = styled.div`
 export default class DetailsProduct extends React.Component {
     state = {
         productD: [
-            {category: "",
-            description: "",
-            installments: 0,
-            name: "",
-            paymentMethod: "",
-            photos: [],
-            price: 0,
-            firstNameValue: "",
-            lastNameValue: "",
-        }
+            {
+                category: "",
+                description: "",
+                installments: 0,
+                name: "",
+                paymentMethod: "",
+                photos: [],
+                price: 0,
+                firstNameValue: "",
+                lastNameValue: "",
+            }
         ]
     }
     productsDetail = (id) => {
@@ -111,7 +112,7 @@ export default class DetailsProduct extends React.Component {
                 </ContainerImg>
                 <Container>
                     <h2>{this.state.name}</h2>
-                    <PriceStyled>{this.state.price}</PriceStyled>
+                    <PriceStyled>R$ {this.state.price}</PriceStyled>
                     <p>{this.state.installments}x sem Juros</p>
                     <h4>{this.state.firstNameValue} {this.state.lastNameValue}</h4>
                     <ButtonStyled>

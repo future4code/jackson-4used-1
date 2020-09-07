@@ -73,6 +73,7 @@ export default class DetailsProduct extends React.Component {
                             idProduct={product.id}
                             description={product.description}
                             price={product.price}
+                            openProductDetails={this.props.openProductDetails}
                         />
                     )
                 })}  
