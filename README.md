@@ -24,7 +24,6 @@ Esse é um projeto em grupo, segue o nome da galera:
 
 ### O que não funciona:
 
-- A renderização dos detalhes do produto;
 - Carrinho de compras;
 
 ### Link do Surge:
