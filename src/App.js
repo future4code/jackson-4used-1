@@ -183,6 +183,7 @@ export default class App extends React.Component {
 					<DetailsProduct 
 						idProduct={this.state.productId}
 						addToShoppingCart={this.addToShoppingCart}
+						goToHomePage={this.goToHomePage}
 					/>
 				)
 				break

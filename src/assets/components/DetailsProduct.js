@@ -61,6 +61,7 @@ export default class DetailsProduct extends React.Component {
     state = {
         productD: {}
     }
+
     productsDetail = (id) => {
         axios.get( `${baseUrl}/${id}` )
     
@@ -74,9 +75,22 @@ export default class DetailsProduct extends React.Component {
             console.log(error)
         })
     }
+
     componentDidMount = (props) => {
         this.productsDetail(this.props.idProduct)
     }
+
+    deleteProduct = (id) => {
+        axios.delete( `${baseUrl}/${id}` )
+        .then(response => {
+            alert(`Anúncio removido`)
+            this.props.goToHomePage()
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     render() {
 
         const seller = (this.state.productD.sellerFirstName || 'Curadoria' )
@@ -103,18 +117,19 @@ export default class DetailsProduct extends React.Component {
                     <h3>Vendedor(a):</h3>
                     <h4>{ seller }</h4>
                     <ButtonStyled>
-                        <Button variant="contained" color="secondary" disabled>
-                            eu quero
-                        </Button>
                         <Button 
-                            variant="contained" 
+                            variant="outlined" 
                             color="secondary"
                             onClick={() => this.props.addToShoppingCart(this.state.productD)}
                         >
                             adicionar ao carrinho
                         </Button>
-                        <Button variant="outlined" color="secondary" disabled>
-                            fazer oferta
+                        <Button 
+                            variant="outlined" 
+                            color="primary" 
+                            onClick={() => this.deleteProduct(this.props.idProduct)}
+                        >
+                            deletar anúncio
                         </Button>
                     </ButtonStyled>
                     <ContainerDescription>
