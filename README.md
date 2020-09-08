@@ -21,10 +21,12 @@ Esse é um projeto em grupo, segue o nome da galera:
 - Integração com a API pra dispor os produtos;
 - Quero vender com inputs funcionais, ele adiciona o produto preenchendo todo o formulário;
 - Página de Login não funcional;
+- Carrinho de compras;
 
 ### O que não funciona:
 
-- Carrinho de compras;
+- Página de Login;
+- Fale conosco;
 
 ### Link do Surge:
 
