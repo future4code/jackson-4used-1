@@ -9,7 +9,6 @@ import { baseUrl } from "../constants/axiosConstants";
 
 const Img = styled.img`
     width: 500px;
-    height: 650px;
     border: 1px hidden;
     margin-bottom: 50px;
     margin-right: 50px;
@@ -46,10 +45,10 @@ const ContainerDescription = styled.div`
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
     width: 450px;
-    height: 450px;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     margin: 10px;
+    padding: 10px;
 
 `
 const ContQuestion = styled.div`
@@ -104,21 +103,22 @@ export default class DetailsProduct extends React.Component {
                     <h3>Vendedor(a):</h3>
                     <h4>{ seller }</h4>
                     <ButtonStyled>
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color="secondary" disabled>
                             eu quero
                         </Button>
                         <Button 
-                            variant="outlined" 
+                            variant="contained" 
                             color="secondary"
                             onClick={() => this.props.addToShoppingCart(this.state.productD)}
                         >
                             adicionar ao carrinho
                         </Button>
-                        <Button variant="outlined" color="secondary">
+                        <Button variant="outlined" color="secondary" disabled>
                             fazer oferta
                         </Button>
                     </ButtonStyled>
                     <ContainerDescription>
+                        <h3>Descrição:</h3>
                         <p>{this.state.productD.description}</p>
                     </ContainerDescription>
                 </Container>

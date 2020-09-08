@@ -24,7 +24,7 @@ const myTheme = createMuiTheme ({
 
 export default class App extends React.Component {
 	state = {
-		currentSection: "create-product-page",
+		currentSection: '',
 		searchValue: '',
 		searchFilter: '',
 		productId: '',

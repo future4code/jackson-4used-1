@@ -49,7 +49,7 @@ const FilterButtons = styled.div`
 const ProductsListContainer= styled.div`
     margin-top: 1.5rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
 `
