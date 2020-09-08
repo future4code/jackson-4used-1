@@ -19,7 +19,6 @@ const All = styled.div`
  margin: 0 auto;
  border-bottom: 1px solid #EEE9E9;
  max-width: 1024px;
- /* font-family: 'Merriweather', serif; */
 `
 
 const Logo = styled.img`

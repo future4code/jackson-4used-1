@@ -9,7 +9,6 @@ import { baseUrl } from "../constants/axiosConstants";
 
 const Img = styled.img`
     width: 500px;
-    height: 650px;
     border: 1px hidden;
     margin-bottom: 50px;
     margin-right: 50px;
@@ -46,10 +45,10 @@ const ContainerDescription = styled.div`
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
     width: 450px;
-    height: 450px;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     margin: 10px;
+    padding: 10px;
 
 `
 const ContQuestion = styled.div`
@@ -62,6 +61,7 @@ export default class DetailsProduct extends React.Component {
     state = {
         productD: {}
     }
+
     productsDetail = (id) => {
         axios.get( `${baseUrl}/${id}` )
     
@@ -75,9 +75,22 @@ export default class DetailsProduct extends React.Component {
             console.log(error)
         })
     }
+
     componentDidMount = (props) => {
         this.productsDetail(this.props.idProduct)
     }
+
+    deleteProduct = (id) => {
+        axios.delete( `${baseUrl}/${id}` )
+        .then(response => {
+            alert(`Anúncio removido`)
+            this.props.goToHomePage()
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     render() {
 
         const seller = (this.state.productD.sellerFirstName || 'Curadoria' )
@@ -104,9 +117,6 @@ export default class DetailsProduct extends React.Component {
                     <h3>Vendedor(a):</h3>
                     <h4>{ seller }</h4>
                     <ButtonStyled>
-                        <Button variant="contained" color="secondary">
-                            eu quero
-                        </Button>
                         <Button 
                             variant="outlined" 
                             color="secondary"
@@ -114,11 +124,16 @@ export default class DetailsProduct extends React.Component {
                         >
                             adicionar ao carrinho
                         </Button>
-                        <Button variant="outlined" color="secondary">
-                            fazer oferta
+                        <Button 
+                            variant="outlined" 
+                            color="primary" 
+                            onClick={() => this.deleteProduct(this.props.idProduct)}
+                        >
+                            deletar anúncio
                         </Button>
                     </ButtonStyled>
                     <ContainerDescription>
+                        <h3>Descrição:</h3>
                         <p>{this.state.productD.description}</p>
                     </ContainerDescription>
                 </Container>

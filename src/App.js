@@ -28,7 +28,8 @@ export default class App extends React.Component {
 		searchValue: '',
 		searchFilter: '',
 		productId: '',
-		shoppingCart: []
+		shoppingCart: [],
+		categoryFilter: ''
 	}
 
 	componentDidUpdate() {
@@ -46,7 +47,8 @@ export default class App extends React.Component {
 	goToProductsList = () => {
 		this.setState({
 			currentSection: "products-list",
-			searchFilter: ""
+			searchFilter: "",
+			categoryFilter: ""
 		})
 	}
 
@@ -94,10 +96,18 @@ export default class App extends React.Component {
 	}
 
 	addToShoppingCart = (product) => {
-		this.state.shoppingCart.push(product)
-		// console.log(this.state.shoppingCart)
-		alert(`Produto ${product.name} adicionado ao carrinho!`)
-		this.setState({currentSection: "home-page"})
+		const cartItemPosition = this.state.shoppingCart.findIndex(item => {
+			return item.id === product.id
+		});
+		const alreadyInCart = cartItemPosition > -1
+		if (alreadyInCart) {
+			alert(`Produto ${product.name} já está no carrinho.\nNão é possível adicionar novamente.`)
+		} else {
+			this.state.shoppingCart.push(product)
+			// console.log(this.state.shoppingCart)
+			alert(`Produto ${product.name} adicionado ao carrinho!`)
+			this.setState({currentSection: "home-page"})
+		}
 	}
 
 	deleteShoppingCartItem = (id) => {
@@ -111,6 +121,41 @@ export default class App extends React.Component {
 		this.setState({currentSection: "thank-you-page"})
 	}
 
+	filterInstruments = () => {
+		this.setState({
+			categoryFilter: 'instruments',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterMedia = () => {
+		this.setState({
+			categoryFilter: 'media',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterCollectible = () => {
+		this.setState({
+			categoryFilter: 'collectible',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterAudio = () => {
+		this.setState({
+			categoryFilter: 'audio',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterSoundSystem = () => {
+		this.setState({
+			categoryFilter: 'sound-system',
+			currentSection: 'products-list'
+		})
+	}
+
 	render () {
 		const currentSection = this.state.currentSection
 		let selectedSection = ''
@@ -119,6 +164,11 @@ export default class App extends React.Component {
 				selectedSection = (
 					<HomePage 
 						openProductDetails={this.onClickCard}
+						filterInstruments={this.filterInstruments}
+						filterMedia={this.filterMedia}
+						filterCollectible={this.filterCollectible}
+						filterAudio={this.filterAudio}
+						filterSoundSystem={this.filterSoundSystem}
 					/>
 				)
 				break
@@ -127,6 +177,12 @@ export default class App extends React.Component {
 					<ProductsList 
 						searchFilter={this.state.searchFilter}
 						openProductDetails={this.onClickCard}
+						filterInstruments={this.filterInstruments}
+						filterMedia={this.filterMedia}
+						filterCollectible={this.filterCollectible}
+						filterAudio={this.filterAudio}
+						filterSoundSystem={this.filterSoundSystem}
+						categoryFilter={this.state.categoryFilter}
 					/>
 				)
 				break
@@ -135,6 +191,7 @@ export default class App extends React.Component {
 					<DetailsProduct 
 						idProduct={this.state.productId}
 						addToShoppingCart={this.addToShoppingCart}
+						goToHomePage={this.goToHomePage}
 					/>
 				)
 				break
