@@ -1,8 +1,7 @@
 import React from 'react'
-import { createMuiTheme, MuiThemeProvider, AppBar } from "@material-ui/core"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
 import Header from './assets/components/Header'
-import ShoppingCart, {Appbar} from './assets/components/ShoppingCart'
-
+import ShoppingCart from './assets/components/ShoppingCart'
 import DetailsProduct from './assets/components/DetailsProduct'
 import Footer from './assets/components/Footer'
 import ProductsList from './assets/components/ProductsList'
@@ -25,7 +24,7 @@ const myTheme = createMuiTheme ({
 
 export default class App extends React.Component {
 	state = {
-		currentSection: "shopping-cart",
+		currentSection: "create-product-page",
 		searchValue: '',
 		searchFilter: '',
 		productId: '',
