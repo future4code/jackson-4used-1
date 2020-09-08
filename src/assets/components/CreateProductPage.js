@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid'
 import { InputLabel, FormControl } from '@material-ui/core';
 import axios from "axios"
 import { baseUrl } from "../constants/axiosConstants"
-import ThankYouPage from './ThankYouPage'
 
 const FormDiv = styled(Grid)({
     backgroundColor: "#FFFCEF",

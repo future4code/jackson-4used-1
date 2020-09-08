@@ -15,9 +15,6 @@ const All = styled.div`
 `
 
 export default class CategoryBar extends React.Component {
-    constructor(props) {
-        super(props)
-      }
 
     render() {
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -10,7 +9,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import ImgCard, { CardMedia } from './ImgCard'
+import ImgCard from './ImgCard'
 import CategoryBar from './CategoryBar'
 import axios from 'axios'
 import { baseUrl } from "../constants/axiosConstants";
