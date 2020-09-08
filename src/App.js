@@ -9,6 +9,7 @@ import ProductsList from './assets/components/ProductsList'
 import HomePage from './assets/components/HomePage'
 import LoginPage from './assets/components/LoginPage'
 import CreateProductPage from './assets/components/CreateProductPage'
+import ThankYou from './assets/components/ThankYouPage'
 // import ShoppingCart from "./assets/components/shoppingCart"
 
 const myTheme = createMuiTheme ({
@@ -107,7 +108,9 @@ export default class App extends React.Component {
 		this.setState({shoppingCart: newCart});
 	};
 
-
+	checkOut = () => {
+		this.setState({currentSection: "thank-you-page"})
+	}
 
 	render () {
 		const currentSection = this.state.currentSection
@@ -151,7 +154,13 @@ export default class App extends React.Component {
 					<ShoppingCart 
 						shoppingCart={this.state.shoppingCart}
 						deleteShoppingCartItem={this.deleteShoppingCartItem}
+						checkOut={this.checkOut}
 					/>
+				)
+				break
+			case "thank-you-page":
+				selectedSection = (
+					<ThankYou />
 				)
 				break
 			default:

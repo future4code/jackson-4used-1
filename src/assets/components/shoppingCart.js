@@ -3,6 +3,7 @@ import styled from 'styled-components' ;
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import { withStyles } from '@material-ui/core/styles';
 
 const All = styled.div`
   max-width: 1024px;
@@ -14,7 +15,7 @@ const All = styled.div`
 `
 
 export const ShoppingCartList = styled.table`
-  width: 50%;
+  width: 80%;
 `
 
 export const ShoppingCartTitle = styled.caption`
@@ -42,13 +43,23 @@ export const ShoppingCartPrice = styled.td`
 
 export const ShoppingCartDelete = styled.td`
   border-bottom: 1px dashed black;
-  padding: 1em 0.8em;
   width: 10%;
+  text-align: right;
 `
 
 export const Total = styled.h3`
   margin-top: 1.6em;
 `
+
+const styles = theme => ({
+  deleteButton: {
+    padding: '4px',
+    '&:hover': {
+      color: "#F04E3E",
+      backgroundColor: "#F04E3E22",
+    },
+  },
+});
 
 class ShoppingCart extends React.Component {
   constructor(props) {
@@ -61,6 +72,8 @@ class ShoppingCart extends React.Component {
         item && (totalSum += item.price)
     });
 
+    const { classes } = this.props;
+
     return (
       <All>
         <table>
@@ -71,9 +84,14 @@ class ShoppingCart extends React.Component {
                 <ShoppingCartItem>{item.name}</ShoppingCartItem>
                 <ShoppingCartPrice>R$ {item.price}</ShoppingCartPrice>
                 <ShoppingCartDelete>
-                  <DeleteOutlinedIcon 
+                  <IconButton 
+                    className={classes.deleteButton}
+                    aria-label="delete item" 
+                    component="span"
                     onClick={() => this.props.deleteShoppingCartItem(item.id)}
-                  />
+                  >
+                    <DeleteOutlinedIcon />
+                  </IconButton>
                 </ShoppingCartDelete>
               </ShoppingCartRow>
             )
@@ -81,7 +99,11 @@ class ShoppingCart extends React.Component {
         </table>
         {totalSum > 0 &&
         <Total>Total: R$ {totalSum}</Total>}
-        <Button variant="contained" color="secondary">
+        <Button 
+          variant="contained" 
+          color="secondary"
+          onClick={this.props.checkOut}
+        >
           Finalizar compra
         </Button>
       </All>
@@ -89,4 +111,4 @@ class ShoppingCart extends React.Component {
   }
 }
 
-export default ShoppingCart;
+export default withStyles(styles)(ShoppingCart);
