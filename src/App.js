@@ -28,7 +28,8 @@ export default class App extends React.Component {
 		searchValue: '',
 		searchFilter: '',
 		productId: '',
-		shoppingCart: []
+		shoppingCart: [],
+		categoryFilter: ''
 	}
 
 	componentDidUpdate() {
@@ -46,7 +47,8 @@ export default class App extends React.Component {
 	goToProductsList = () => {
 		this.setState({
 			currentSection: "products-list",
-			searchFilter: ""
+			searchFilter: "",
+			categoryFilter: ""
 		})
 	}
 
@@ -111,6 +113,41 @@ export default class App extends React.Component {
 		this.setState({currentSection: "thank-you-page"})
 	}
 
+	filterInstruments = () => {
+		this.setState({
+			categoryFilter: 'instruments',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterMedia = () => {
+		this.setState({
+			categoryFilter: 'media',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterCollectible = () => {
+		this.setState({
+			categoryFilter: 'collectible',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterAudio = () => {
+		this.setState({
+			categoryFilter: 'audio',
+			currentSection: 'products-list'
+		})
+	}
+
+	filterSoundSystem = () => {
+		this.setState({
+			categoryFilter: 'sound-system',
+			currentSection: 'products-list'
+		})
+	}
+
 	render () {
 		const currentSection = this.state.currentSection
 		let selectedSection = ''
@@ -119,6 +156,11 @@ export default class App extends React.Component {
 				selectedSection = (
 					<HomePage 
 						openProductDetails={this.onClickCard}
+						filterInstruments={this.filterInstruments}
+						filterMedia={this.filterMedia}
+						filterCollectible={this.filterCollectible}
+						filterAudio={this.filterAudio}
+						filterSoundSystem={this.filterSoundSystem}
 					/>
 				)
 				break
@@ -127,6 +169,12 @@ export default class App extends React.Component {
 					<ProductsList 
 						searchFilter={this.state.searchFilter}
 						openProductDetails={this.onClickCard}
+						filterInstruments={this.filterInstruments}
+						filterMedia={this.filterMedia}
+						filterCollectible={this.filterCollectible}
+						filterAudio={this.filterAudio}
+						filterSoundSystem={this.filterSoundSystem}
+						categoryFilter={this.state.categoryFilter}
 					/>
 				)
 				break

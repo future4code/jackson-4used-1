@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components"
-import Carousel from 'react-elastic-carousel'
-import ImgCard, { CardMedia } from './ImgCard'
 import axios from "axios"
+import Carousel from 'react-elastic-carousel'
+import ImgCard from './ImgCard'
+import CategoryBar from './CategoryBar'
 import { baseUrl } from "../constants/axiosConstants";
 import Imagem1 from '../images/musica2.jpg'
 import Imagem2 from '../images/disco-de-vinil.jpg'
@@ -63,6 +64,13 @@ export default class DetailsProduct extends React.Component {
                         <Img src={Imagem3} />
                     </Carousel>
                 </SlideShow>
+                <CategoryBar 
+                    filterInstruments={this.props.filterInstruments}
+                    filterMedia={this.props.filterMedia}
+                    filterCollectible={this.props.filterCollectible}
+                    filterAudio={this.props.filterAudio}
+                    filterSoundSystem={this.props.filterSoundSystem}
+                />
                 <ProductsListContainer>
                 {this.state.listProductsHome.map((product) => {
                     return (
