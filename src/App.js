@@ -95,10 +95,18 @@ export default class App extends React.Component {
 	}
 
 	addToShoppingCart = (product) => {
-		this.state.shoppingCart.push(product)
-		// console.log(this.state.shoppingCart)
-		alert(`Produto ${product.name} adicionado ao carrinho!`)
-		this.setState({currentSection: "home-page"})
+		const cartItemPosition = this.state.shoppingCart.findIndex(item => {
+			return item.id === product.id
+		});
+		const alreadyInCart = cartItemPosition > -1
+		if (alreadyInCart) {
+			alert(`Produto ${product.name} já está no carrinho.\nNão é possível adicionar novamente.`)
+		} else {
+			this.state.shoppingCart.push(product)
+			// console.log(this.state.shoppingCart)
+			alert(`Produto ${product.name} adicionado ao carrinho!`)
+			this.setState({currentSection: "home-page"})
+		}
 	}
 
 	deleteShoppingCartItem = (id) => {
