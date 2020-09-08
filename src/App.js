@@ -118,7 +118,10 @@ export default class App extends React.Component {
 	};
 
 	checkOut = () => {
-		this.setState({currentSection: "thank-you-page"})
+		this.setState({
+			currentSection: "thank-you-page",
+			shoppingCart: []
+		})
 	}
 
 	filterInstruments = () => {

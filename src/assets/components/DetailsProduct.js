@@ -4,8 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios"
 import { baseUrl } from "../constants/axiosConstants";
-
-
+import { withStyles } from '@material-ui/core/styles';
 
 const Img = styled.img`
     width: 500px;
@@ -19,6 +18,7 @@ const Img = styled.img`
 const All = styled.div`
     display: flex;
     justify-content: center;
+    margin-bottom: 2em;
 `
 const ContainerImg = styled.div`
     display: flex;
@@ -32,32 +32,42 @@ const PriceStyled = styled.p`
     color: #F04E3E;
     font-size: 28px;
 `
-const ButtonStyled = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    width: 450px;
-    justify-content: space-evenly;
-    height: 150px;
-    margin-right: 20px;
-`
 const ContainerDescription = styled.div`
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
     width: 450px;
     border-radius: 10px;
     text-align: left;
-    margin: 10px;
-    padding: 10px;
+    padding: 8px 16px;
 
+    h3 {
+        margin: 0 0 1em 0;
+    }
+
+    p {
+        margin: 0 0 0.8em 0;
+    }
 `
 const ContQuestion = styled.div`
     width: 450px;
     display: flex;
-    
+    gap: 0.8em;
 `
 
-export default class DetailsProduct extends React.Component {
+const styles = {
+    addButton: {
+        color: '#FFFCEF',
+        fontWeight: 600,
+        marginBottom: '1.6em',
+        width: '100%'
+    },
+    deleteButton: {
+        marginTop: '1.6em',
+        width: '100%'
+    }
+}
+
+class DetailsProduct extends React.Component {
     state = {
         productD: {}
     }
@@ -93,6 +103,8 @@ export default class DetailsProduct extends React.Component {
 
     render() {
 
+        const { classes } = this.props;  
+
         const seller = (this.state.productD.sellerFirstName || 'Curadoria' )
             + ' ' 
             + (this.state.productD.sellerLastName || '4USED')
@@ -116,33 +128,30 @@ export default class DetailsProduct extends React.Component {
                     <p>{this.state.productD.installments}x sem Juros</p>
                     <h3>Vendedor(a):</h3>
                     <h4>{ seller }</h4>
-                    <ButtonStyled>
-                        <Button 
-                            variant="outlined" 
-                            color="secondary"
-                            onClick={() => this.props.addToShoppingCart(this.state.productD)}
-                        >
-                            adicionar ao carrinho
-                        </Button>
-                        <Button 
-                            variant="outlined" 
-                            color="primary" 
-                            onClick={() => this.deleteProduct(this.props.idProduct)}
-                        >
-                            deletar anúncio
-                        </Button>
-                    </ButtonStyled>
+                    <Button 
+                        className={classes.addButton}
+                        variant="contained" 
+                        color="secondary"
+                        onClick={() => this.props.addToShoppingCart(this.state.productD)}
+                    >
+                        adicionar ao carrinho
+                    </Button>
                     <ContainerDescription>
                         <h3>Descrição:</h3>
                         <p>{this.state.productD.description}</p>
                     </ContainerDescription>
+                    <Button 
+                        className={classes.deleteButton}
+                        variant="outlined" 
+                        color="primary" 
+                        onClick={() => this.deleteProduct(this.props.idProduct)}
+                    >
+                        deletar anúncio
+                    </Button>
                 </Container>
             </All>
-                    
-            
-            
         )
     }
-
-
 }
+
+export default withStyles(styles)(DetailsProduct);
