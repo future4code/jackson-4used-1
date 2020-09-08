@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid'
 import { InputLabel, FormControl } from '@material-ui/core';
 import axios from "axios"
 import { baseUrl } from "../constants/axiosConstants"
-import ThankYouPage from './ThankYouPage'
 
 const FormDiv = styled(Grid)({
     backgroundColor: "#FFFCEF",
@@ -46,11 +45,11 @@ export default class CreateProductPage extends React.Component {
         lastNameValue: "",
         productNameValue: "",
         categoryValue: "",
-        priceValue: 0,
+        priceValue: "",
         descriptionValue: "",
         urlLinkValue: "",
         paymentMethodValue: "",
-        installmentsValue: 1
+        installmentsValue: ""
     }
 
     registerNewProduct = () => {
@@ -149,6 +148,8 @@ export default class CreateProductPage extends React.Component {
                             <option value="instruments">Instrumentos</option>
                             <option value="media">Mídia</option>
                             <option value="collectible">Colecionáveis</option>
+                            <option value="audio">Equipamento de Audio</option>
+                            <option value="sound-system">Sistema de Som</option>
                         </SelectOption>  
                     </FormControl>
                     <InputField type="number" name="price" variant="outlined" placeholder="Preço" value={this.state.priceValue} onChange={this.handlePriceChange}/>
@@ -171,18 +172,18 @@ export default class CreateProductPage extends React.Component {
                             <option value="transfer">Transferência</option>
                         </SelectOption>
                     </FormControl>
-                    <FormControl>
+                    <FormControl variant="outlined">
                         <InputLabel id="payment-installments">Quantidade de Parcelas</InputLabel>
                         <SelectOption
                             name="installments"
-                            labelId="installments-label"
-                            label="parcelas"
+                            labelId="payment-installments"
+                            label="Quantidade de Parcelas"
                             native
                             variant="outlined"
                             value={this.state.installmentsValue} 
                             onChange={this.handleInstallmentsChange}
                         >
-                            
+                            <option value=""/>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -193,11 +194,18 @@ export default class CreateProductPage extends React.Component {
                             <option value="8">8</option>
                             <option value="9">9</option>
                             <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
                         </SelectOption>
                        
-                        </FormControl>
-                    <Button variant="contained" color="secondary" onClick={this.registerNewProduct}>Enviar</Button>
-                    
+                    </FormControl>
+                    <Button 
+                        variant="contained" 
+                        color="secondary" 
+                        onClick={this.registerNewProduct}
+                    >
+                        Enviar
+                    </Button>
                 </FormDiv>
             </div>
         )

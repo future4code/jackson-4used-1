@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -10,7 +9,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import ImgCard, { CardMedia } from './ImgCard'
+import ImgCard from './ImgCard'
+import CategoryBar from './CategoryBar'
 import axios from 'axios'
 import { baseUrl } from "../constants/axiosConstants";
 
@@ -49,7 +49,7 @@ const FilterButtons = styled.div`
 const ProductsListContainer= styled.div`
     margin-top: 1.5rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
 `
@@ -98,17 +98,23 @@ class ProductsList extends React.Component {
         axios.get( baseUrl )
 
         .then((response) => {
-            const {searchFilter} = this.props
+            const {searchFilter, categoryFilter} = this.props
             const allProducts = response.data.products
-            let filteredBySearch = allProducts.filter(product => {
+            let filteredProducts = allProducts.filter(product => {
                 return (
                     product.name.toLowerCase().indexOf(
                         searchFilter.toLowerCase()
                     ) > -1
                 )
+            }).filter(product => {
+                return (
+                    product.category.toLowerCase().indexOf(
+                        categoryFilter.toLowerCase()
+                    ) > -1
+                )
             })
 
-            let sortedList = [...filteredBySearch]
+            let sortedList = [...filteredProducts]
             switch (this.state.sortValue) {
                 case "name":
                     sortedList.sort((a, b) => {
@@ -190,6 +196,13 @@ class ProductsList extends React.Component {
         
         return (
             <All>
+                <CategoryBar 
+                    filterInstruments={this.props.filterInstruments}
+                    filterMedia={this.props.filterMedia}
+                    filterCollectible={this.props.filterCollectible}
+                    filterAudio={this.props.filterAudio}
+                    filterSoundSystem={this.props.filterSoundSystem}
+                />
                 <ProductsHeader>
                     <Filters>
                         <Button 

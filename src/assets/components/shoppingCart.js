@@ -62,9 +62,6 @@ const styles = theme => ({
 });
 
 class ShoppingCart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let totalSum = 0;
