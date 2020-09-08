@@ -30,6 +30,8 @@ Esse é um projeto em grupo, segue o nome da galera:
 
 ### Link do Surge:
 
+- http://economic-ducks.surge.sh/
+
 
 ### Paleta de cores usada:
 
