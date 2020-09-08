@@ -35,7 +35,7 @@ Esse é um projeto em grupo, segue o nome da galera:
 
 - https://coolors.co/202020-313139-393943-43434f-fffcef-ffffff-43ada5-fcca64-f04e3e
 
-### Leyout
+### Layout
 
 - Baseado no enjoei.com.br
 
