@@ -1,7 +1,7 @@
 import React from 'react'
 import { createMuiTheme, MuiThemeProvider, AppBar } from "@material-ui/core"
 import Header from './assets/components/Header'
-import shoppingCart, {Appbar} from './assets/components/shoppingCart'
+import ShoppingCart, {Appbar} from './assets/components/ShoppingCart'
 
 import DetailsProduct from './assets/components/DetailsProduct'
 import Footer from './assets/components/Footer'
@@ -9,6 +9,7 @@ import ProductsList from './assets/components/ProductsList'
 import HomePage from './assets/components/HomePage'
 import LoginPage from './assets/components/LoginPage'
 import CreateProductPage from './assets/components/CreateProductPage'
+import ThankYou from './assets/components/ThankYouPage'
 // import ShoppingCart from "./assets/components/shoppingCart"
 
 const myTheme = createMuiTheme ({
@@ -24,10 +25,19 @@ const myTheme = createMuiTheme ({
 
 export default class App extends React.Component {
 	state = {
-		currentSection: '',
+		currentSection: "shopping-cart",
 		searchValue: '',
 		searchFilter: '',
-		productId: ''
+		productId: '',
+		shoppingCart: []
+	}
+
+	componentDidUpdate() {
+		localStorage.setItem('shoppingCart', JSON.stringify(this.state.shoppingCart))
+	}
+
+	componentDidMount() {
+		this.setState({shoppingCart: JSON.parse(localStorage.getItem('shoppingCart')) || []})
 	}
 
 	goToHomePage = () => {
@@ -80,6 +90,36 @@ export default class App extends React.Component {
 		this.goToProductDetails()
 	  }
 
+	goToShoppingCart = () => {
+		this.setState({currentSection: "shopping-cart"})
+	}
+
+	addToShoppingCart = (product) => {
+		const cartItemPosition = this.state.shoppingCart.findIndex(item => {
+			return item.id === product.id
+		});
+		const alreadyInCart = cartItemPosition > -1
+		if (alreadyInCart) {
+			alert(`Produto ${product.name} já está no carrinho.\nNão é possível adicionar novamente.`)
+		} else {
+			this.state.shoppingCart.push(product)
+			// console.log(this.state.shoppingCart)
+			alert(`Produto ${product.name} adicionado ao carrinho!`)
+			this.setState({currentSection: "home-page"})
+		}
+	}
+
+	deleteShoppingCartItem = (id) => {
+		const newCart = this.state.shoppingCart.filter(item => {
+			return (item.id === id) ? false : true
+		});
+		this.setState({shoppingCart: newCart});
+	};
+
+	checkOut = () => {
+		this.setState({currentSection: "thank-you-page"})
+	}
+
 	render () {
 		const currentSection = this.state.currentSection
 		let selectedSection = ''
@@ -103,6 +143,7 @@ export default class App extends React.Component {
 				selectedSection = (
 					<DetailsProduct 
 						idProduct={this.state.productId}
+						addToShoppingCart={this.addToShoppingCart}
 					/>
 				)
 				break
@@ -118,7 +159,16 @@ export default class App extends React.Component {
 				break
 			case "shopping-cart":
 				selectedSection = (
-					<shoppingCart />
+					<ShoppingCart 
+						shoppingCart={this.state.shoppingCart}
+						deleteShoppingCartItem={this.deleteShoppingCartItem}
+						checkOut={this.checkOut}
+					/>
+				)
+				break
+			case "thank-you-page":
+				selectedSection = (
+					<ThankYou />
 				)
 				break
 			default:
@@ -137,6 +187,8 @@ export default class App extends React.Component {
 					handleSearchValue={this.state.searchValue}
 					onChangeSearch={this.onChangeSearch}
 					goToSearchResults={this.filterProductsBySearch}
+					shoppingCart={this.state.shoppingCart}
+					goToShoppingCart={this.goToShoppingCart}
 				/>
 				{ selectedSection }
 				<Footer />
